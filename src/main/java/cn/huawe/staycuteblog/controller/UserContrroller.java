@@ -16,5 +16,8 @@ import org.springframework.stereotype.Controller;
 @Controller
 @RequestMapping("/user")
 public class UserContrroller {
-	
+    @RequestMapping("/hello")
+	public String hello(){
+	    return "hello";
+    }
 }
