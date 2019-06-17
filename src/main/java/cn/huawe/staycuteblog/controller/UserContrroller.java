@@ -4,6 +4,7 @@ package cn.huawe.staycuteblog.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * <p>
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Controller;
 public class UserContrroller {
     //牛逼
     @RequestMapping("/hello")
+    @ResponseBody
 	public String hello(){
 	    return "hello";
     }
