@@ -5,6 +5,7 @@ import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 @Data
@@ -15,7 +16,7 @@ public class User {
     * 用户ID
     */
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
     /**
@@ -31,7 +32,7 @@ public class User {
     /**
     * 用户手机号码
     */
-    private Integer userPhone;
+    private String userPhone;
 
     /**
     * 用户性别
@@ -41,7 +42,7 @@ public class User {
     /**
     * 用户QQ号码
     */
-    private Integer userQq;
+    private String userQq;
 
     /**
     * 用户EMAIL地址
