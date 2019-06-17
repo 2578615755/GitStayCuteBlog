@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 @RequestMapping("/user")
 public class UserContrroller {
+    //牛逼
     @RequestMapping("/hello")
 	public String hello(){
 	    return "hello";
