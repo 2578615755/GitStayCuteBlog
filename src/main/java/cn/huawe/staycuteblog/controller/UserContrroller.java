@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/user")
 public class UserContrroller {
-    //牛逼
+    //牛逼kkkkkkls
     @RequestMapping("/hello")
     @ResponseBody
 	public String hello(){
