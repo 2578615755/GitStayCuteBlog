@@ -22,3 +22,6 @@ spring:
     properties:
       mail.smtp.socketFactory.fallback: true
       mail.smtp.starttls.enable: true
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
