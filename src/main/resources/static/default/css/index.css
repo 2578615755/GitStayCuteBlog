@@ -1,0 +1,36 @@
+@keyframes
+pound {
+    50%{
+        transform: scale(1.2);
+    }
+}
+.heart {
+    animation: pound .5s infinite;
+}
+#bottom{
+    width:100%;
+    background-color:#323333;
+    height:300px;
+}
+#bottom-content{
+    width:1000px;
+    overflow:hidden;
+    margin:0 auto;
+    color:white;
+    height:280px;
+}
+#content-left{
+    width:460px;
+    float:left;
+    height:280px;
+}
+#bottom-content p{
+    margin-top:10px;
+}
+#content-right{
+    width:460px;
+    float:right;
+    height:280px;
+    text-align: center;
+    margin-top: 150px;
+}

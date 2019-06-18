@@ -1,0 +1,123 @@
+body{
+    background-color: #F0F0F0;
+}
+*{
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    font-size: 14px;
+    text-decoration:none;
+}
+#top{
+    width: 100%;
+    height: 90px;
+    background-color: white;
+    border-bottom: 1px solid #bbbbbb;
+}
+#menu{
+    width: 1000px;
+    overflow: hidden;
+    margin: 0 auto;
+
+}
+#menu img{
+    height: 90px;
+}
+#menu ul{
+    list-style-type: none;
+}
+#menu ul li{
+    float: left;
+    height: 90px;
+    line-height: 90px;
+    margin-right: 50px;
+}
+#menu ul li a{
+    color: black;text-decoration: none;
+    display: inline-block;
+}
+#menu ul li a:hover{color: #ff7363;text-decoration: none}
+#box{
+    width: 900px;
+    height: 370px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 50px;
+}
+#box p{
+    text-align: center;
+}
+
+.p_line{
+    border-bottom: 1px solid #bbbbbb;
+    height: 40px;
+    line-height: 50px;
+}
+.txtBox{
+    border: 1px solid #bbbbbb;
+    width: 350px;
+    margin-top: 30px;
+    height: 50px;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+.btn {
+    width: 365px;
+    height: 50px;;
+    color: white;
+    background-color: #DD0000;
+    margin-top: 25px;}
+#bottom{
+    width:100%;
+    background-color:#323333;
+    height:300px;
+    margin-top:230px;
+}
+#bottom-content{
+    width:1000px;
+    overflow:hidden;
+    margin:0 auto;
+    color:white;
+    height:280px;
+}
+#content-left{
+    width:460px;
+    float:left;
+    height:280px;
+}
+#bottom-content p{
+    margin-top:10px;
+}
+#content-right{
+    width:460px;
+    float:right;
+    height:280px;
+    text-align: center;
+    margin-top: 150px;
+}
+#pr,#er{
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top:  0;*/
+    height: 500px;
+    width: 700px;
+    background:rgba(0,0,0,0.7);
+    color: white;
+    margin:0 auto;
+    display: none;
+    margin-top: 50px;
+}
+#pr p input,#er p input{
+    margin-top: 8px;
+    height: 40px;
+    width: 200px;
+    background-color: transparent;
+    color: white;
+    border-radius:6px;border:1px solid #baffd4;
+}
+.hide-register-btn1,.hide-register-btn2{
+    margin-left: 670px;
+    font-size: 30px;
+    cursor: pointer;
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.huawei.staycuteblog.mapper.UserAttentionMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="cn.huawei.staycuteblog.entity.UserAttention">
+		<id column="a_id" property="aId" />
+		<result column="user_id" property="userId" />
+		<result column="attention_id" property="attentionId" />
+	</resultMap>
+
+</mapper>

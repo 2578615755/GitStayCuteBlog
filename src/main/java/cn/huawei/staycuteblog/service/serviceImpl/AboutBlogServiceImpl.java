@@ -1,0 +1,20 @@
+package cn.huawei.staycuteblog.service.serviceImpl;
+
+import cn.huawei.staycuteblog.entity.AboutBlog;
+import cn.huawei.staycuteblog.mapper.AboutBlogMapper;
+import cn.huawei.staycuteblog.service.AboutBlogService;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
+
+/**
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author huangmindong
+ * @since 2019-06-18
+ */
+@Service
+public class AboutBlogServiceImpl extends ServiceImpl<AboutBlogMapper, AboutBlog> implements AboutBlogService {
+	
+}
