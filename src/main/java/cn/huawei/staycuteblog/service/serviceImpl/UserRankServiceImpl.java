@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-06-18
  */
 @Service
-public class UserRankServiceImpl extends ServiceImpl<UserRankMapper, UserRank> implements UserRankService {
+public class UserRankServiceImpl implements UserRankService {
 	
 }

@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-06-18
  */
 @Service
-public class UserAttentionServiceImpl extends ServiceImpl<UserAttentionMapper, UserAttention> implements UserAttentionService {
+public class UserAttentionServiceImpl implements UserAttentionService {
 	
 }

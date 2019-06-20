@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-06-18
  */
 @Service
-public class PhotoSortServiceImpl extends ServiceImpl<PhotoSortMapper, PhotoSort> implements PhotoSortService {
+public class PhotoSortServiceImpl implements PhotoSortService {
 	
 }

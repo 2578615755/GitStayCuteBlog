@@ -2,6 +2,7 @@ package cn.huawei.staycuteblog.mapper;
 
 import cn.huawei.staycuteblog.entity.AboutBlog;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @author huangmindong
  * @since 2019-06-18
  */
-public interface AboutBlogMapper extends BaseMapper<AboutBlog> {
+@Mapper
+public interface AboutBlogMapper{
 
 }

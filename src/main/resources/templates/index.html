@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -8,14 +9,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="wap-font-scale" content="no">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" href="default/css/reset.css">
-    <link rel="stylesheet" href="default/css/bootstrap.min.css?v=3.3.6">
-    <link rel="stylesheet" href="default/css/animate.min.css">
-    <link rel="stylesheet" href="default/css/swiper.css">
-    <link rel="stylesheet" href="default/css/flexslider.css">
-    <link rel="stylesheet" href="default/css/font-awesome.min.css">
-    <link rel="stylesheet" href="default/css/app.css">
-    <link rel="stylesheet" href="default/css/index.css">
+    <link rel="stylesheet" th:href="@{/default/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/default/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/default/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/default/css/swiper.css}">
+    <link rel="stylesheet" th:href="@{/default/css/flexslider.css}">
+    <link rel="stylesheet" th:href="@{/default/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/default/css/app.css}">
+    <link rel="stylesheet" th:href="@{/default/css/index.css}">
 </head>
 <body>
 <!-- Loading -->
@@ -45,7 +46,7 @@
                 <nav id="site-nav" class="nav-toggle">
                     <ul class="menu">
                         <li><a href="/">首页</a></li>
-                        <li><a href="/user/login">登录</a></li>
+                        <li><a href="/user/loginpage">登录</a></li>
                         <li><a href="/user/login">注册</a></li>
                         <li><a href="#">关于</a></li>
                     </ul>
@@ -58,38 +59,38 @@
 <div id="full-slider" class="flexslider section-slider">
     <ul class="slides">
         <li>
-            <img src="default/img/q.jpg" />
+            <img th:src="@{/default/img/q.jpg}" />
             <div class="adjust-block">
                 <h2 class="slide-title">欢迎来到柠檬博客</h2>
                 <!--<p class="slide-description">欢迎</p>-->
                 <div class="btns-row">
 
-                    <a href="/user/login" class="btn btn-tran">登录</a>
-                    <a href="/user/login" class="btn btn-tran">注册</a>
+                    <a href="/user/loginpage" class="btn btn-tran">登录</a>
+                    <a href="#" class="btn btn-tran">注册</a>
                 </div>
             </div>
         </li>
         <li>
-            <img src="default/img/w.jpg" />
+            <img th:src="@{/default/img/w.jpg}" />
             <div class="adjust-block">
                 <h2 class="slide-title">欢迎来到柠檬博客</h2>
                 <!--<p class="slide-description">欢迎</p>-->
                 <div class="btns-row">
 
-                    <a href="/user/login" class="btn btn-tran">登录</a>
-                    <a href="/user/login" class="btn btn-tran">注册</a>
+                    <a href="/user/loginpage" class="btn btn-tran">登录</a>
+                    <a href="#" class="btn btn-tran">注册</a>
                 </div>
             </div>
         </li>
         <li>
-            <img src="default/img/e.jpg" />
+            <img th:src="@{/default/img/e.jpg}" />
             <div class="adjust-block">
                 <h2 class="slide-title">欢迎来到柠檬博客</h2>
                 <!--<p class="slide-description">欢迎</p>-->
                 <div class="btns-row">
 
-                    <a href="/user/login" class="btn btn-tran">登录</a>
-                    <a href="/user/login" class="btn btn-tran">注册</a>
+                    <a href="/user/loginpage" class="btn btn-tran">登录</a>
+                    <a href="#" class="btn btn-tran">注册</a>
                 </div>
             </div>
         </li>
@@ -215,21 +216,21 @@
     </div>
 </div>
 <footer class="footer-bottom">
-    <img src="default/img/baiduxylogo.png" title="百度保障" style="width:90px;padding-top:10px;padding-bottom:10px;">
-    <img src="default/img/xy.png" title="百度信誉" style="width:90px;padding-top:10px;padding-bottom:10px;">
-    <img src="default/img/qcloud-logo.png" title="腾讯云" style="width:90px;padding-top:10px;padding-bottom:10px;">
+    <img th:src="@{/default/img/baiduxylogo.png}" title="百度保障" style="width:90px;padding-top:10px;padding-bottom:10px;">
+    <img th:src="@{/default/img/xy.png}" title="百度信誉" style="width:90px;padding-top:10px;padding-bottom:10px;">
+    <img th:src="@{/default/img/qcloud-logo.pn}" title="腾讯云" style="width:90px;padding-top:10px;padding-bottom:10px;">
     <p class="copyright">Copyright &copy; 2014 - 2019
         <i class="fa fa-heart heart"></i>
         <a href="#">柠檬博客</a> All Rights Reserved</p></footer>
-<script src="default/js/jquery.min.js"></script>
-<script src="default/js/dianji.js"></script>
-<script src="default/js/image-loaded.js"></script>
-<script src="default/js/wow.js"></script>
-<script src="default/js/swiper.jquery.min.js"></script>
-<script src="default/js/isotope.pkgd.min.js"></script>
-<script src="default/js/jquery.countto.js"></script>
-<script src="default/js/jquery.flexslider.js"></script>
-<script src="default/js/app.js"></script>
+<script th:src="@{/default/js/jquery.min.js}"></script>
+<script th:src="@{/default/js/dianji.js}"></script>
+<script th:src="@{/default/js/image-loaded.js}"></script>
+<script th:src="@{/default/js/wow.js}"></script>
+<script th:src="@{/default/js/swiper.jquery.min.js}"></script>
+<script th:src="@{/default/js/isotope.pkgd.min.js}"></script>
+<script th:src="@{/default/js/jquery.countto.js}"></script>
+<script th:src="@{/default/js/jquery.flexslider.js}"></script>
+<script th:src="@{/default/js/app.js}"></script>
 <script id="myhk" src="https://music.limh.me/player/js/player.js" key="155719434794" m="1"></script>
 </body>
 </html>

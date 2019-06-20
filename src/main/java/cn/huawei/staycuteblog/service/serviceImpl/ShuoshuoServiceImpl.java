@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-06-18
  */
 @Service
-public class ShuoshuoServiceImpl extends ServiceImpl<ShuoshuoMapper, Shuoshuo> implements ShuoshuoService {
+public class ShuoshuoServiceImpl implements ShuoshuoService {
 	
 }

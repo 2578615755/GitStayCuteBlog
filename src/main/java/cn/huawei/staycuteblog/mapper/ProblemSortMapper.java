@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @author huangmindong
  * @since 2019-06-18
  */
-public interface ProblemSortMapper extends BaseMapper<ProblemSort> {
+public interface ProblemSortMapper{
 
 }

@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.service.IService;
  * @author huangmindong
  * @since 2019-06-18
  */
-public interface AboutBlogService extends IService<AboutBlog> {
+public interface AboutBlogService{
 	
 }

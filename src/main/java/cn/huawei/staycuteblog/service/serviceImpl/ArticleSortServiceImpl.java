@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-06-18
  */
 @Service
-public class ArticleSortServiceImpl extends ServiceImpl<ArticleSortMapper, ArticleSort> implements ArticleSortService {
+public class ArticleSortServiceImpl implements ArticleSortService {
 	
 }

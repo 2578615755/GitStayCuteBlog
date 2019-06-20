@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-06-18
  */
 @Service
-public class AboutBlogServiceImpl extends ServiceImpl<AboutBlogMapper, AboutBlog> implements AboutBlogService {
+public class AboutBlogServiceImpl implements AboutBlogService {
 	
 }

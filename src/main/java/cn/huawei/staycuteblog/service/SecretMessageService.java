@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.service.IService;
  * @author huangmindong
  * @since 2019-06-18
  */
-public interface SecretMessageService extends IService<SecretMessage> {
+public interface SecretMessageService{
 	
 }

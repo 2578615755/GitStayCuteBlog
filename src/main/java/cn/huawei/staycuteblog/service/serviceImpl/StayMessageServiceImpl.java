@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-06-18
  */
 @Service
-public class StayMessageServiceImpl extends ServiceImpl<StayMessageMapper, StayMessage> implements StayMessageService {
+public class StayMessageServiceImpl implements StayMessageService {
 	
 }

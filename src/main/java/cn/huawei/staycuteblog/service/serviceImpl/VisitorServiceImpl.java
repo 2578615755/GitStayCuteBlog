@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-06-18
  */
 @Service
-public class VisitorServiceImpl extends ServiceImpl<VisitorMapper, Visitor> implements VisitorService {
+public class VisitorServiceImpl implements VisitorService {
 	
 }

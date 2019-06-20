@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @author huangmindong
  * @since 2019-06-18
  */
-public interface SystemMessageMapper extends BaseMapper<SystemMessage> {
+public interface SystemMessageMapper{
 
 }

@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-06-18
  */
 @Service
-public class SecretMessageServiceImpl extends ServiceImpl<SecretMessageMapper, SecretMessage> implements SecretMessageService {
+public class SecretMessageServiceImpl implements SecretMessageService {
 	
 }

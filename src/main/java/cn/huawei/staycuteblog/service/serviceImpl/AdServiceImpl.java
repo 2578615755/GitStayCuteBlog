@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-06-18
  */
 @Service
-public class AdServiceImpl extends ServiceImpl<AdMapper, Ad> implements AdService {
+public class AdServiceImpl implements AdService {
 	
 }

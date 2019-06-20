@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-06-18
  */
 @Service
-public class FriendlyLinkServiceImpl extends ServiceImpl<FriendlyLinkMapper, FriendlyLink> implements FriendlyLinkService {
+public class FriendlyLinkServiceImpl implements FriendlyLinkService {
 	
 }

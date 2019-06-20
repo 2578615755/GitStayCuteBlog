@@ -1,7 +1,6 @@
 package cn.huawei.staycuteblog.mapper;
 
 import cn.huawei.staycuteblog.entity.User;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -14,13 +13,20 @@ import org.apache.ibatis.annotations.Select;
  * @since 2019-06-18
  */
 @Mapper
-public interface UserMapper extends BaseMapper<User> {
+public interface UserMapper{
     /**
-     * 登录 并且得到数据
+     * Shiro登录 并且得到数据
      * @param username
-     * @param password
      * @return
      */
-    @Select("select * from user where user_name=#{username} and user_pwd=#{password} ")
-    User getByUsernameAndPassword(String username,String password);
+    @Select("select * from user where user_name=#{username}")
+    User getByUsername(String username);
+
+    /**
+     * 通过用户名查询用户的头像
+     * @param username
+     * @return
+     */
+    @Select("select user_image_url from user where user_name=#{username}")
+    String getByTitle(String username);
 }
