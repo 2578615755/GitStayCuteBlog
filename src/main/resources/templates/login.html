@@ -54,7 +54,10 @@
 <script type="text/javascript" th:src="@{/layui/layui.all.js}"></script>
 
 <script th:inline="javascript">
-    layer.msg([[${session.msg}]], {icon: 2});
+    var msg=[[${session.msg}]];
+    if(msg=="您的用户名不存在"||msg=="您的密码填写有误"){
+        layer.msg(msg, {icon: 2});
+    }
 </script>
 <script>
     var username=$("#username");

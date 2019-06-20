@@ -52,7 +52,6 @@ public class UserContrroller {
             //登陆成功
             User user = userService.login(username);
             session.setAttribute("user",user);
-            session.setAttribute("msg","欢迎"+user.getUserName()+"来到柠檬博客!");
             return "redirect:/user/homepage";
         } catch (UnknownAccountException e) {
             session.setAttribute("msg","您的用户名不存在");
