@@ -40,4 +40,28 @@ public class UserServiceImpl implements UserService {
     public String findTitle(String username) {
         return userMapper.getByTitle(username);
     }
+    /**
+     * 手机用户注册
+     * @param username
+     * @param password
+     * @param phone
+     * @param qq
+     * @param email
+     * @param title
+     * @return
+     */
+    @Override
+    public int sjRegistered(String username, String password, String phone, String qq, String email, String title,String ip) {
+        return userMapper.sjRegistered(username,password,phone,qq,email,title,ip);
+    }
+    /**
+     * 修改登录之后的IP
+     * @param username
+     * @param ip
+     * @return
+     */
+    @Override
+    public int updateLoginIp(String username, String ip) {
+        return userMapper.updateLoginIp(username,ip);
+    }
 }

@@ -40,10 +40,7 @@ public class ShiroConfig {
          *      role:该资源必须得到角色权限才能访问
          */
         Map<String,String> filterMap=new LinkedHashMap<>();
-        //拦截所有帖子
-        filterMap.put("/post/**","authc");
-        //拦截管理员对用户的操作
-        filterMap.put("/admin/user/**","perms[1]");
+
         //拦截直播页面
         filterMap.put("/show","perms[1]");
         //拦截普通对自己用户修改

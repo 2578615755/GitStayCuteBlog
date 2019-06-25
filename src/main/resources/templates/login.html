@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="#"/>
     <link rel="styleSheet" th:href="@{/default/css/main.css}"/>
+    <link rel="styleSheet" th:href="@{/layui/css/layui.css}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>柠檬博客-登录</title>
 </head>
@@ -17,10 +18,10 @@
             </div>
             <span>
                 <form id="loginForm" action="/user/login" method="post">
-                    <p class="form"><input type="text" name="username" id="username" placeholder="账号/手机号码/邮箱"></p>
-                    <p class="form"><input type="password" name="password" id="password" placeholder="密码"></p>
+                    <p class="form"><i style="font-size: 30px;color: white" class="layui-icon layui-icon-username"></i><input type="text" name="username" id="username" placeholder="账号/手机号码/邮箱"></p>
+                    <p class="form"><i style="font-size: 30px;color: white" class="layui-icon layui-icon-password"></i><input type="password" name="password" id="password" placeholder="密码"></p>
                     <input type="submit" value="登录" class="btn" id="log" style="margin-right: 20px;">
-                    <input type="button" value="注册" class="btn" id="btn">
+                    <input type="button"  value="注册" class="btn" id="btn">
                 </form>
                 <a href="#">忘记密码?</a>
                 </span>
@@ -44,7 +45,7 @@
                     <span></span>
                     <span></span>
                 </span>
-            <p id="title">柠檬博客</p>
+            <p id="title">登录柠檬博客</p>
         </div>
     </div>
 </div>
@@ -89,6 +90,9 @@
     var name_c = document.getElementById("title")
     name = name_c.innerHTML.split("")
     name_c.innerHTML = ""
-    for (i = 0; i < name.length; i++) if (name[i] != ",")name_c.innerHTML += "<i>" + name[i] + "</i>"
+    for (i = 0; i < name.length; i++) if (name[i] != ",")name_c.innerHTML += "<i>" + name[i] + "</i>";
+    $("#btn").click(function () {
+        window.location.href="/user/registeredpage";
+    })
 </script>
 </html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="#"/>
+    <link rel="styleSheet" th:href="@{/default/css/main.css}"/>
+    <link rel="styleSheet" th:href="@{/layui/css/layui.css}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>柠檬博客-注册</title>
+    <style>
+        .form i{
+            font-size: 25px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div id="bg">
+    <div id="login_wrap">
+        <div id="login"><!-- 登录注册切换动画 -->
+            <div id="status">
+                <i style="top: 0">注册</i>
+            </div>
+            <span>
+                <form id="phoneform" action="/user/sjRegistered" method="post">
+                    <p class="form"><i class="layui-icon layui-icon-username"></i><input type="text" name="username" id="phone" placeholder="手机号码"></p>
+                    <p class="form"><i class="layui-icon layui-icon-username"></i><input type="text" id="phoneYzm" style="width: 260px" placeholder="验证码"><input style="width: 35px;height: 30px" type="button" value="发送" id="phoneSend"></p>
+                    <p class="form"><i class="layui-icon layui-icon-password"></i><input type="password" id="phonePassword" name="password" placeholder="密码"></p>
+                    <p class="form"><i class="layui-icon layui-icon-password"></i><input type="password" id="phonePassword1"  placeholder="确认密码"></p>
+                    <p class="form"><i class="layui-icon layui-icon-login-qq"></i><input type="text" id="phoneQq" name="qq" placeholder="QQ账号"></p>
+                    <input type="submit" value="注册" class="btn" id="log" style="margin-right: 20px;">
+                    <input type="button" value="前往登录" class="btn" id="btn">
+                </form>
+            </span>
+        </div>
+
+        <div id="login_img"><!-- 图片绘制框 -->
+            <span class="circle">
+                   <img id="usertitle" src="http://q1.qlogo.cn/g?b=qq&nk=2578615755&s=100" alt="">
+                </span>
+            <span class="star">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            <span class="fly_star">
+                    <span></span>
+                    <span></span>
+                </span>
+            <p id="title">注册柠檬博客</p>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="phoneCode" value="">
+</body>
+<script type="text/javascript" th:src="@{/default/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/layer/layer.js}"></script>
+<script type="text/javascript" th:src="@{/layui/layui.all.js}"></script>
+<script>
+    //自动居中title
+    var name_c = document.getElementById("title")
+    name = name_c.innerHTML.split("")
+    name_c.innerHTML = ""
+    for (i = 0; i < name.length; i++) if (name[i] != ",")name_c.innerHTML += "<i>" + name[i] + "</i>";
+
+    //手机号注册
+    $("#phoneSend").click(function () {
+        var phone = $("#phone").val();
+        if(phone==""&&phone.length==0) {
+            layer.msg('请填写手机号码哟,不然怎么发送验证码呀!', {icon: 2});
+            return false;
+        }else if(phone.length!=11){
+            layer.msg('请填写正确的手机号码哟!', {icon: 2});
+            return false;
+        }else {
+            time(this);
+            $.get("/user/sendPhone", "phone=" + phone, function (data) {
+                layer.msg("发送验证码成功!", {icon: 1});
+                $("#phoneCode").val(data);
+            }, "text");
+            return true;
+        }
+    });
+    var phoneYzm=$("#phoneYzm");
+    var phonePassword=$("#phonePassword");
+    var phoneQq=$("#phoneQq");
+    function fphoneYzm(){
+        var phoneCode = $("#phoneCode");
+        if(phoneYzm.val()==""&&phoneYzm.val().length==0) {
+            layer.msg('请填写验证码哦!', {icon: 2});
+            return false;
+        }else if(phoneYzm.val()!=phoneCode.val()) {
+            layer.msg('验证码不正确哦!', {icon: 2});
+            return false;
+        }
+        return true;
+    }
+    function fphonePassword(){
+        if(phonePassword.val()==""&&phonePassword.val().length==0){
+            layer.msg('请填写密码哟!', {icon: 2});
+            return false;
+        }else if($("#phonePassword1").val()!=phonePassword.val()){
+            layer.msg('您输入的两次密码不一致哦!', {icon: 2});
+            return false;
+        }
+        return true;
+    }
+    function fphoneQq(){
+        if(phoneQq.val()==""&&phoneQq.val().length==0) {
+            layer.msg('请填写您的QQ账号哟!', {icon: 2});
+            return false;
+        }
+        return true;
+    }
+    phoneYzm.blur(fphoneYzm);
+    phonePassword.blur(fphonePassword);
+    phoneQq.blur(fphoneQq);
+    $("#phoneform").submit(function () {
+        if(!fphoneYzm()) return false;
+        if(!fphonePassword()) return false;
+        if(!fphoneQq()) return false;
+        return true;
+    });
+    //点击之后变成重新发送倒计时
+    var wait=60;
+    function time(o) {
+        if (wait == 0) {
+            o.removeAttribute("disabled");
+            o.value = "获取验证码";
+            wait = 60;
+        } else {
+            o.setAttribute("disabled", true);
+            o.value = "重新发送" + wait;
+            wait--;
+            setTimeout(function () {
+                time(o)
+            }, 1000)
+        }
+    }
+    $("#btn").click(function () {
+        window.location.href="/user/login";
+    })
+</script>
+</html>

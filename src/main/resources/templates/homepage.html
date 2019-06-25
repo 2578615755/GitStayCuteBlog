@@ -10,8 +10,43 @@
 <script type="text/javascript" th:src="@{/layer/layer.js}"></script>
 <script type="text/javascript" th:src="@{/layui/layui.all.js}"></script>
 <script th:inline="javascript">
+    function getNowFormatDate() {//获取当前时间
+        var date = new Date();
+        var seperator1 = "-";
+        var seperator2 = ":";
+        var month = date.getMonth() + 1<10? "0"+(date.getMonth() + 1):date.getMonth() + 1;
+        var strDate = date.getDate()<10? "0" + date.getDate():date.getDate();
+        var currentdate = date.getFullYear() + seperator1  + month  + seperator1  + strDate
+            + " "  + date.getHours()  + seperator2  + date.getMinutes()
+            + seperator2 + date.getSeconds();
+        return currentdate;
+    }
     //用户数据
     var data=[[${session.data}]];
+    //ip地址
+    var information=[[${session.information}]];
+    $("#ip").html("登陆IP:"+information.data.ip);
+    $("#address").html("登陆地址:"+information.data.region+"省"+information.data.city);
+    $("#time").html(getNowFormatDate());
+    //边缘弹出
+    layer.open({
+        type: 1
+        ,offset: 'rb' //具体配置参考：offset参数项
+        ,content: '<div style="height: 100px;width: 300px">' +
+                        '<center>' +
+                            '<div id="ip"></div>' +
+                            '<div id="address"></div>' +
+                            '<div id="time"></div>' +
+                        '</center>' +
+                   '</div>'
+        ,btn: '关闭'
+        ,title:'登录信息'
+        ,btnAlign: 'c' //按钮居中
+        ,shade: 0 //不显示遮罩
+        ,yes: function(){
+            layer.closeAll();
+        }
+    });
 </script>
 </body>
 </html>

@@ -25,4 +25,25 @@ public interface UserService{
      * @return
      */
 	String findTitle(String username);
+
+    /**
+     * 手机用户注册
+     * @param username
+     * @param password
+     * @param phone
+     * @param qq
+     * @param email
+     * @param title
+     * @return
+     */
+    int sjRegistered(String username,String password,String phone,String qq,
+                     String email,String title,String ip);
+
+    /**
+     * 修改登录之后的IP
+     * @param username
+     * @param ip
+     * @return
+     */
+    int updateLoginIp(String username,String ip);
 }
