@@ -6,6 +6,12 @@
     <title>Title</title>
 </head>
 <body>
+
+
+
+
+
+
 <script type="text/javascript" th:src="@{/default/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/layer/layer.js}"></script>
 <script type="text/javascript" th:src="@{/layui/layui.all.js}"></script>
@@ -25,20 +31,18 @@
     var data=[[${session.data}]];
     //ip地址
     var information=[[${session.information}]];
-    $("#ip").html("登陆IP:"+information.data.ip);
-    $("#address").html("登陆地址:"+information.data.region+"省"+information.data.city);
-    $("#time").html(getNowFormatDate());
+    var json = eval('(' + information + ')');
     //边缘弹出
     layer.open({
         type: 1
         ,offset: 'rb' //具体配置参考：offset参数项
-        ,content: '<div style="height: 100px;width: 300px">' +
-                        '<center>' +
-                            '<div id="ip"></div>' +
-                            '<div id="address"></div>' +
-                            '<div id="time"></div>' +
-                        '</center>' +
-                   '</div>'
+        ,content: '<div style="height: 110px;width: 305px">' +
+            '<center>' +
+            '<div id="ip"></div><br>' +
+            '<div id="address"></div><br>' +
+            '<div id="time"></div><br>' +
+            '</center>' +
+            '</div>'
         ,btn: '关闭'
         ,title:'登录信息'
         ,btnAlign: 'c' //按钮居中
@@ -47,6 +51,9 @@
             layer.closeAll();
         }
     });
+    $("#ip").html("登陆IP:"+json.data.ip);
+    $("#address").html("登陆地址:"+json.data.region+"省"+json.data.city+"市");
+    $("#time").html("登录时间:"+getNowFormatDate());
 </script>
 </body>
 </html>

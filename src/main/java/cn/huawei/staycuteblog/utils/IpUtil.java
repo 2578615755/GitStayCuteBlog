@@ -71,11 +71,11 @@ public class IpUtil {
             e.printStackTrace();
         }
     }
-//    public static void main(String[] args) {
-//        String ip="106.19.7.77";
-//        interfaceUtil("http://ip.taobao.com/service/getIpInfo.php?ip="+ip, "");
-//        System.out.println(information);
-//    }
+    public static void main(String[] args) {
+        String ip="58.20.74.153";
+        interfaceUtil("http://ip.taobao.com/service/getIpInfo.php?ip="+ip, "");
+        System.out.println(information);
+    }
 
     /**
      * 获得数据
