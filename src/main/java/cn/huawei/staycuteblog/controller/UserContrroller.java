@@ -141,4 +141,19 @@ public class UserContrroller {
         //将验证码返回到ajax
         return String.valueOf(result);
     }
+
+    /**
+     * 查询用户是否被占用
+     * @param phone
+     * @return
+     */
+    @RequestMapping("/selectPhoneTrue")
+    @ResponseBody
+    public String selectPhoneTrue(String phone){
+        if(userService.selectPhoneTrue(phone)!=null){
+            return "true";
+        }else {
+            return "false";
+        }
+    }
 }

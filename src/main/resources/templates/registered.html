@@ -71,20 +71,30 @@
 
     //手机号注册
     $("#phoneSend").click(function () {
+        var c=this;
         var phone = $("#phone").val();
         if(phone==""&&phone.length==0) {
             layer.msg('请填写手机号码哟,不然怎么发送验证码呀!', {icon: 2});
             return false;
-        }else if(phone.length!=11){
+        }else if(phone.length!=11) {
             layer.msg('请填写正确的手机号码哟!', {icon: 2});
             return false;
         }else {
-            time(this);
-            $.get("/user/sendPhone", "phone=" + phone, function (data) {
-                layer.msg("发送验证码成功!", {icon: 1});
-                $("#phoneCode").val(data);
-            }, "text");
-            return true;
+            var is=false;
+            $.get("/user/selectPhoneTrue","phone=" + phone,function (data) {
+                if(data=="true"){
+                    layer.msg('该手机号码已被注册!', {icon: 2});
+                    is=false;
+                }else if (data=="false") {
+                    time(c);
+                    $.get("/user/sendPhone", "phone=" + phone, function (data) {
+                        layer.msg("发送验证码成功!", {icon: 1});
+                        $("#phoneCode").val(data);
+                    }, "text");
+                    is=true;
+                }
+            });
+            return is;
         }
     });
     var phoneYzm=$("#phoneYzm");
@@ -132,11 +142,11 @@
     function time(o) {
         if (wait == 0) {
             o.removeAttribute("disabled");
-            o.value = "获取验证码";
+            o.value = "发送";
             wait = 60;
         } else {
             o.setAttribute("disabled", true);
-            o.value = "重新发送" + wait;
+            o.value = wait;
             wait--;
             setTimeout(function () {
                 time(o)

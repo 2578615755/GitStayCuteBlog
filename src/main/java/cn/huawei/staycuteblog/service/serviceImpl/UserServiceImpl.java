@@ -64,4 +64,13 @@ public class UserServiceImpl implements UserService {
     public int updateLoginIp(String username, String ip) {
         return userMapper.updateLoginIp(username,ip);
     }
+    /**
+     * 查询用户是否被注册
+     * @param username
+     * @return
+     */
+    @Override
+    public User selectPhoneTrue(String username) {
+        return userMapper.selectPhoneTrue(username);
+    }
 }

@@ -56,4 +56,12 @@ public interface UserMapper{
      */
     @Update("update user set user_last_login_ip = #{ip} where user_name=#{username};")
     int updateLoginIp(String username,String ip);
+
+    /**
+     * 查询用户是否被注册
+     * @param username
+     * @return
+     */
+    @Select("select * from user where user_name=#{username}")
+    User selectPhoneTrue(String username);
 }

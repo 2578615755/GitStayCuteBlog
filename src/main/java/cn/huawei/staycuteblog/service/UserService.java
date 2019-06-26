@@ -46,4 +46,11 @@ public interface UserService{
      * @return
      */
     int updateLoginIp(String username,String ip);
+
+    /**
+     * 查询用户是否被注册
+     * @param username
+     * @return
+     */
+    User selectPhoneTrue(String username);
 }
