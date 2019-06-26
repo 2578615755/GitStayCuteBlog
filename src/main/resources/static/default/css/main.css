@@ -113,13 +113,13 @@ input:focus{
     display: block;
 }
 #login_img .circle{
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     background: linear-gradient(45deg, #df9242, #efae4c);
-    top: 180px;
+    top: 130px;
     left: 50%;
-    margin-left: -50px;
+    margin-left: -60px;
     overflow: hidden;
 }
 #login_img .circle span{

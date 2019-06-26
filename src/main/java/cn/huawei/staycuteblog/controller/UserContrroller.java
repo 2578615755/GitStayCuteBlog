@@ -116,7 +116,7 @@ public class UserContrroller {
     public String sjRegistered(HttpSession session,String username, String password,String qq){
         //获得IP
         String ip = IpUtil.getIP(request);
-        if(userService.sjRegistered(username,password,username,qq,qq+"@qq.com","http://q1.qlogo.cn/g?b=qq&nk="+qq+"&s=100",ip)>0){
+        if(userService.sjRegistered(username,password,username,qq,qq+"@qq.com","http://q1.qlogo.cn/g?b=qq&nk="+qq+"&s=140",ip)>0){
             session.setAttribute("msg","注册成功,正在跳转至登录页!");
             return "redirect:/user/loginpage";
         }else {

@@ -72,7 +72,7 @@ public class IpUtil {
         }
     }
     public static void main(String[] args) {
-        String ip="58.20.74.153";
+        String ip="113.218.53.205";
         interfaceUtil("http://ip.taobao.com/service/getIpInfo.php?ip="+ip, "");
         System.out.println(information);
     }
