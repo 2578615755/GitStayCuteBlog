@@ -56,7 +56,10 @@ public class UserContrroller {
     public String registered(){
         return "registered";
     }
-
+    @RequestMapping("/resetpasswordPage")
+    public String resetpasswordPage(){
+        return "resetpassword";
+    }
     /**
      * 登录
      * @param session
