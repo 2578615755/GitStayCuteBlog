@@ -53,4 +53,11 @@ public interface UserService{
      * @return
      */
     User selectPhoneTrue(String username);
+    /**
+     * 重置密码
+     * @param username
+     * @param password
+     * @return
+     */
+    int updatePassword(String username,String password);
 }
