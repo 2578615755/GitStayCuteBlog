@@ -58,6 +58,9 @@
     if(msg=="您的用户名不存在"||msg=="您的密码填写有误"){
         layer.msg(msg, {icon: 2});
     }
+    if(msg=="重置密码成功,正在跳转至登录页!"){
+        layer.msg(msg, {icon: 1});
+    }
 </script>
 <script>
     var username=$("#username");

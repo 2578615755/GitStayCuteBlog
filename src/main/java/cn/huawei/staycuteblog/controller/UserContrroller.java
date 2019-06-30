@@ -19,15 +19,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Random;
-
-import static cn.huawei.staycuteblog.utils.SmsUtil.sendSms;
-
 /**
  * <p>
  *  前端控制器
@@ -127,7 +121,7 @@ public class UserContrroller {
     @RequestMapping("/updatePassword")
     public String updatePassword(HttpSession session,String phone,String password){
         if(userService.updatePassword(phone, password)>0){
-            session.setAttribute("msg","充值密码成功,正在跳转至登录页!");
+            session.setAttribute("msg","重置密码成功,正在跳转至登录页!");
             return "redirect:/user/loginpage";
         }else {
             session.setAttribute("msg","发生未知错误,请稍后再尝试!");
