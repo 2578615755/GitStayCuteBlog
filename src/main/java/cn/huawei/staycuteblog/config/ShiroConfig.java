@@ -44,7 +44,7 @@ public class ShiroConfig {
         //拦截直播页面
         filterMap.put("/show","perms[1]");
         //拦截普通对自己用户修改
-        filterMap.put("/user/updateUser","authc");
+        filterMap.put("/admin/**.html","authc");
         //修改跳转的登录页面
         shiroFilterFactoryBean.setLoginUrl("/user/loginpage");
         //设置未授权提示页面
