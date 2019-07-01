@@ -60,6 +60,10 @@ public class UserContrroller {
     public String dataPage(){
         return "data";
     }
+    @RequestMapping("/adminLoginPage")
+    public String adminLoginPage(){
+        return "adminLogin";
+    }
     /**
      * 登录
      * @param session
