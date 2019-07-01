@@ -56,6 +56,10 @@ public class UserContrroller {
     public String resetpasswordPage(){
         return "resetpassword";
     }
+    @RequestMapping("/dataPage")
+    public String dataPage(){
+        return "data";
+    }
     /**
      * 登录
      * @param session
