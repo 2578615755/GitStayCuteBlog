@@ -40,7 +40,7 @@ aside section h2 { background: #f16e50; color: #FFF; padding-left: 30px; height:
 .taglist ul li a:hover { background: #f16e50; color: #fff; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px }
 .blogitem { width: 730px; background: #fff; float: right }
 .blogitem article { border-bottom: #F4F3EF 40px solid; }
-.title { background: url(../images/titlebg.png) no-repeat 5% 80%; font-size: 20px; line-height: 28px; display: inline-block; padding: 38px 60px 8px 80px; border-bottom: 1px solid #e2e2e2; width: 100%; }
+.title { background: url(../img/titlebg.png) no-repeat 5% 80%; font-size: 20px; line-height: 28px; display: inline-block; padding: 38px 60px 8px 80px; border-bottom: 1px solid #e2e2e2; width: 100%; }
 .title a { color: #454545; }
 .title a:hover { padding: 20px }
 .text { font-size: 14px; padding: 20px 40px; }

@@ -5,6 +5,8 @@
     <title>柠檬博客-主页</title>
     <link th:href="@{/default/css/styles.css}" rel="stylesheet">
     <link th:href="@{/default/css/zzsc.css}" rel="stylesheet">
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script type="text/javascript" th:src="@{/default/js/vue.js}"></script>
 </head>
 <body>
 <header style="position: fixed;left: 0;top: 0;z-index: 1000">
@@ -37,10 +39,10 @@
                     <div class="navLeft">
                         <p>帖子分类</p>
                         <div class="fenlei">
-                            <ul>
+                            <ul id="ulId">
                                 <li>
                                     <dl class="fenleiLeft">
-                                        <dt>男人</dt>
+                                        <dt>娱乐明星</dt>
                                         <dd>
                                             <a href="http://www.jq22.com">衣服</a>
                                             <a href="http://www.jq22.com">衣服</a>
@@ -54,7 +56,7 @@
                                 </li>
                                 <li>
                                     <dl class="fenleiLeft">
-                                        <dt>美食</dt>
+                                        <dt>爱综艺</dt>
                                         <dd>
                                             <a href="http://www.jq22.com">男鞋</a><a href="http://www.jq22.com">男裤</a>
                                             <a href="http://www.jq22.com">手表</a><a href="http://www.jq22.com">男卫衣</a>
@@ -66,7 +68,7 @@
                                 </li>
                                 <li>
                                     <dl class="fenleiLeft">
-                                        <dt>女人</dt>
+                                        <dt>追剧狂</dt>
                                         <dd>
                                             <a href="http://www.jq22.com">男鞋</a><a href="http://www.jq22.com">男裤</a>
                                             <a href="http://www.jq22.com">手表</a><a href="http://www.jq22.com">男卫衣</a>
@@ -79,7 +81,7 @@
                                 </li>
                                 <li>
                                     <dl class="fenleiLeft">
-                                        <dt>数码</dt>
+                                        <dt>看电影</dt>
                                         <dd>
                                             <a href="http://www.jq22.com">男鞋</a><a href="http://www.jq22.com">男裤</a>
                                             <a href="http://www.jq22.com">手表</a><a href="http://www.jq22.com">男卫衣</a>
@@ -91,7 +93,7 @@
                                 </li>
                                 <li>
                                     <dl class="fenleiLeft">
-                                        <dt>家具</dt>
+                                        <dt>动漫宅</dt>
                                         <dd>
                                             <a href="http://www.jq22.com">男鞋</a><a href="http://www.jq22.com">男裤</a>
                                             <a href="http://www.jq22.com">手表</a><a href="http://www.jq22.com">男卫衣</a>
@@ -103,7 +105,7 @@
                                 </li>
                                 <li>
                                     <dl class="fenleiLeft">
-                                        <dt>母婴</dt>
+                                        <dt>小说</dt>
                                         <dd>
                                             <a href="http://www.jq22.com">男鞋</a><a href="http://www.jq22.com">男裤</a>
                                             <a href="http://www.jq22.com">手表</a><a href="http://www.jq22.com">男卫衣</a>
@@ -115,7 +117,19 @@
                                 </li>
                                 <li>
                                     <dl class="fenleiLeft">
-                                        <dt>美妆</dt>
+                                        <dt>生活家</dt>
+                                        <dd>
+                                            <a href="http://www.jq22.com">男鞋</a><a href="http://www.jq22.com">男裤</a>
+                                            <a href="http://www.jq22.com">手表</a><a href="http://www.jq22.com">男卫衣</a>
+                                            <a href="http://www.jq22.com">nb男鞋</a><a href="http://www.jq22.com">打底衫</a>
+                                            <a href="http://www.jq22.com">拖鞋</a><a href="http://www.jq22.com">睡衣</a>
+                                            <a href="http://www.jq22.com">男运动鞋</a><a href="http://www.jq22.com">山地车</a>
+                                        </dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="fenleiLeft">
+                                        <dt>游戏</dt>
                                         <dd>
                                             <a href="http://www.jq22.com">男鞋</a><a href="http://www.jq22.com">男裤</a>
                                             <a href="http://www.jq22.com">手表</a><a href="http://www.jq22.com">男卫衣</a>
@@ -126,58 +140,6 @@
                                     </dl>
                                 </li>
                             </ul>
-                        </div>
-                        <div class="fenleiright">
-                            <dl class="flright">
-                                <dt>上衣</dt>
-                                <dd>
-                                    <a href="http://www.jq22.com">白衬衫 </a>
-                                    <a href="http://www.jq22.com">潮牌</a>
-                                    <a href="http://www.jq22.com">雪纺衫</a>
-                                    <a href="http://www.jq22.com">班服</a>
-                                    <a href="http://www.jq22.com">宽松上衣</a>
-                                </dd>
-                            </dl>
-                            <dl class="flright">
-                                <dt>下装</dt>
-                                <dd>
-                                    <a href="http://www.jq22.com">白衬衫 </a>
-                                    <a href="http://www.jq22.com">潮牌</a>
-                                    <a href="http://www.jq22.com">雪纺衫</a>
-                                    <a href="http://www.jq22.com">班服</a>
-                                    <a href="http://www.jq22.com">宽松上衣</a>
-                                </dd>
-                            </dl>
-                            <dl class="flright">
-                                <dt>鞋子</dt>
-                                <dd>
-                                    <a href="http://www.jq22.com">白衬衫 </a>
-                                    <a href="http://www.jq22.com">潮牌</a>
-                                    <a href="http://www.jq22.com">雪纺衫</a>
-                                    <a href="http://www.jq22.com">班服</a>
-                                    <a href="http://www.jq22.com">宽松上衣</a>
-                                </dd>
-                            </dl>
-                            <dl class="flright">
-                                <dt>内衣</dt>
-                                <dd>
-                                    <a href="http://www.jq22.com">白衬衫 </a>
-                                    <a href="http://www.jq22.com">潮牌</a>
-                                    <a href="http://www.jq22.com">雪纺衫</a>
-                                    <a href="http://www.jq22.com">班服</a>
-                                    <a href="http://www.jq22.com">宽松上衣</a>
-                                </dd>
-                            </dl>
-                            <dl class="flright">
-                                <dt>帽子</dt>
-                                <dd>
-                                    <a href="http://www.jq22.com">白衬衫 </a>
-                                    <a href="http://www.jq22.com">潮牌</a>
-                                    <a href="http://www.jq22.com">雪纺衫</a>
-                                    <a href="http://www.jq22.com">班服</a>
-                                    <a href="http://www.jq22.com">宽松上衣</a>
-                                </dd>
-                            </dl>
                         </div>
                     </div>
                     <ul class="navRight">
@@ -191,9 +153,6 @@
                 </div>
             </div>
             <div id="banner">
-                <div class="pic">
-                    <img src="img/banner.jpg" />
-                </div>
             </div>
         </section>
     </aside>
@@ -297,5 +256,41 @@
     $("#ip").html("登陆IP:"+json.data.ip);
     $("#address").html("登陆地址:"+json.data.region+"省"+json.data.city+"市");
     $("#time").html("登录时间:"+getNowFormatDate());
+</script>
+<script>
+    //创建vue对象,并绑定d1区域，将数据渲染到dom
+    var vue= new Vue({
+        el:'#ulId',
+        data:{
+            list:[
+                {"pname":"男鞋"}
+            ]
+        },
+        created(){  //当 vm 实例 的data ，methods 初始化完毕后，vm实例会自动执行created这个生命周期
+            this.getAllList();
+        },
+        methods:{
+            getAllList(){
+
+                $.ajax({
+                    url:"/articleSort/getAll",
+                    type:"GET",
+                    dataType:"json",
+                    success:function (data) {
+                        var result=data;
+                        if (result.status==100) {
+                            this.list=data.list;
+                            console.log(result.list);
+                        }
+                    },
+                    error:function () {
+                        alert("请求有误！！！")
+                    }
+
+                });
+            }
+        }
+    });
+    console.log(vue)
 </script>
 </html>

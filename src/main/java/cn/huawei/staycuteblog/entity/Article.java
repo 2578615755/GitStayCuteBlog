@@ -81,7 +81,6 @@ public class Article implements Serializable {
 	@TableField("article_support")
 	private Integer articleSupport;
 
-
 	public Integer getArticleId() {
 		return articleId;
 	}

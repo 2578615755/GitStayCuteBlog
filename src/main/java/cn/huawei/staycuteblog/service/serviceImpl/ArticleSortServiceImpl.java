@@ -4,7 +4,10 @@ import cn.huawei.staycuteblog.entity.ArticleSort;
 import cn.huawei.staycuteblog.mapper.ArticleSortMapper;
 import cn.huawei.staycuteblog.service.ArticleSortService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +19,16 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ArticleSortServiceImpl implements ArticleSortService {
-	
+
+    @Autowired
+    private ArticleSortMapper articleSortMapper;
+
+    /**
+     * 查询分类信息
+     * @return
+     */
+    @Override
+    public List<ArticleSort> getAll() {
+        return articleSortMapper.getAll();
+    }
 }
