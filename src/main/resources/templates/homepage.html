@@ -7,6 +7,8 @@
     <link th:href="@{/default/css/zzsc.css}" rel="stylesheet">
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
     <script type="text/javascript" th:src="@{/default/js/vue.js}"></script>
+    <!--ajax请求需要引入的    -->
+    <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
 </head>
 <body>
 <header style="position: fixed;left: 0;top: 0;z-index: 1000">
@@ -41,101 +43,10 @@
                         <div class="fenlei">
                             <ul id="ulId">
                                 <li>
-                                    <dl class="fenleiLeft">
-                                        <dt>娱乐明星</dt>
-                                        <dd>
-                                            <a href="http://www.jq22.com">衣服</a>
-                                            <a href="http://www.jq22.com">衣服</a>
-                                            <a href="http://www.jq22.com">衣服</a>
-                                            <a href="http://www.jq22.com">衣服</a>
-                                            <a href="http://www.jq22.com">衣服</a>
-                                            <a href="http://www.jq22.com">衣服</a>
-                                            <a href="http://www.jq22.com">衣服</a>
-                                        </dd>
-                                    </dl>
-                                </li>
-                                <li>
-                                    <dl class="fenleiLeft">
-                                        <dt>爱综艺</dt>
-                                        <dd>
-                                            <a href="http://www.jq22.com">男鞋</a><a href="http://www.jq22.com">男裤</a>
-                                            <a href="http://www.jq22.com">手表</a><a href="http://www.jq22.com">男卫衣</a>
-                                            <a href="http://www.jq22.com">nb男鞋</a><a href="http://www.jq22.com">打底衫</a>
-                                            <a href="http://www.jq22.com">拖鞋</a><a href="http://www.jq22.com">睡衣</a>
-                                            <a href="http://www.jq22.com">男运动鞋</a><a href="http://www.jq22.com">山地车</a>
-                                        </dd>
-                                    </dl>
-                                </li>
-                                <li>
-                                    <dl class="fenleiLeft">
-                                        <dt>追剧狂</dt>
-                                        <dd>
-                                            <a href="http://www.jq22.com">男鞋</a><a href="http://www.jq22.com">男裤</a>
-                                            <a href="http://www.jq22.com">手表</a><a href="http://www.jq22.com">男卫衣</a>
-                                            <a href="http://www.jq22.com">nb男鞋</a><a href="http://www.jq22.com">打底衫</a>
-                                            <a href="http://www.jq22.com">拖鞋</a><a href="http://www.jq22.com">睡衣</a>
-                                            <a href="http://www.jq22.com">男运动鞋</a><a href="http://www.jq22.com">山地车</a>
-
-                                        </dd>
-                                    </dl>
-                                </li>
-                                <li>
-                                    <dl class="fenleiLeft">
-                                        <dt>看电影</dt>
-                                        <dd>
-                                            <a href="http://www.jq22.com">男鞋</a><a href="http://www.jq22.com">男裤</a>
-                                            <a href="http://www.jq22.com">手表</a><a href="http://www.jq22.com">男卫衣</a>
-                                            <a href="http://www.jq22.com">nb男鞋</a><a href="http://www.jq22.com">打底衫</a>
-                                            <a href="http://www.jq22.com">拖鞋</a><a href="http://www.jq22.com">睡衣</a>
-                                            <a href="http://www.jq22.com">男运动鞋</a><a href="http://www.jq22.com">山地车</a>
-                                        </dd>
-                                    </dl>
-                                </li>
-                                <li>
-                                    <dl class="fenleiLeft">
-                                        <dt>动漫宅</dt>
-                                        <dd>
-                                            <a href="http://www.jq22.com">男鞋</a><a href="http://www.jq22.com">男裤</a>
-                                            <a href="http://www.jq22.com">手表</a><a href="http://www.jq22.com">男卫衣</a>
-                                            <a href="http://www.jq22.com">nb男鞋</a><a href="http://www.jq22.com">打底衫</a>
-                                            <a href="http://www.jq22.com">拖鞋</a><a href="http://www.jq22.com">睡衣</a>
-                                            <a href="http://www.jq22.com">男运动鞋</a><a href="http://www.jq22.com">山地车</a>
-                                        </dd>
-                                    </dl>
-                                </li>
-                                <li>
-                                    <dl class="fenleiLeft">
-                                        <dt>小说</dt>
-                                        <dd>
-                                            <a href="http://www.jq22.com">男鞋</a><a href="http://www.jq22.com">男裤</a>
-                                            <a href="http://www.jq22.com">手表</a><a href="http://www.jq22.com">男卫衣</a>
-                                            <a href="http://www.jq22.com">nb男鞋</a><a href="http://www.jq22.com">打底衫</a>
-                                            <a href="http://www.jq22.com">拖鞋</a><a href="http://www.jq22.com">睡衣</a>
-                                            <a href="http://www.jq22.com">男运动鞋</a><a href="http://www.jq22.com">山地车</a>
-                                        </dd>
-                                    </dl>
-                                </li>
-                                <li>
-                                    <dl class="fenleiLeft">
-                                        <dt>生活家</dt>
-                                        <dd>
-                                            <a href="http://www.jq22.com">男鞋</a><a href="http://www.jq22.com">男裤</a>
-                                            <a href="http://www.jq22.com">手表</a><a href="http://www.jq22.com">男卫衣</a>
-                                            <a href="http://www.jq22.com">nb男鞋</a><a href="http://www.jq22.com">打底衫</a>
-                                            <a href="http://www.jq22.com">拖鞋</a><a href="http://www.jq22.com">睡衣</a>
-                                            <a href="http://www.jq22.com">男运动鞋</a><a href="http://www.jq22.com">山地车</a>
-                                        </dd>
-                                    </dl>
-                                </li>
-                                <li>
-                                    <dl class="fenleiLeft">
-                                        <dt>游戏</dt>
-                                        <dd>
-                                            <a href="http://www.jq22.com">男鞋</a><a href="http://www.jq22.com">男裤</a>
-                                            <a href="http://www.jq22.com">手表</a><a href="http://www.jq22.com">男卫衣</a>
-                                            <a href="http://www.jq22.com">nb男鞋</a><a href="http://www.jq22.com">打底衫</a>
-                                            <a href="http://www.jq22.com">拖鞋</a><a href="http://www.jq22.com">睡衣</a>
-                                            <a href="http://www.jq22.com">男运动鞋</a><a href="http://www.jq22.com">山地车</a>
+                                    <dl class="fenleiLeft" v-for="item in list.articleSort.sortArticleName">
+                                        <dt>{{item.articleSort.sortArticleName}}</dt>
+                                        <dd v-for="item in list">
+                                            <a href="http://www.jq22.com">{{item.ziName}}</a>
                                         </dd>
                                     </dl>
                                 </li>
@@ -262,31 +173,20 @@
     var vue= new Vue({
         el:'#ulId',
         data:{
-            list:[
-                {"pname":"男鞋"}
-            ]
+            "list":[]
         },
         created(){  //当 vm 实例 的data ，methods 初始化完毕后，vm实例会自动执行created这个生命周期
             this.getAllList();
         },
         methods:{
             getAllList(){
-
-                $.ajax({
-                    url:"/articleSort/getAll",
-                    type:"GET",
-                    dataType:"json",
-                    success:function (data) {
-                        var result=data;
-                        if (result.status==100) {
-                            this.list=data.list;
-                            console.log(result.list);
-                        }
-                    },
-                    error:function () {
-                        alert("请求有误！！！")
+                this.$http.get('http://localhost:8080/articleSort/getAll').then(result => {
+                    var result=result.body;
+                    if (result.status==100){
+                        this.list=result.list;
+                    }else{
+                        alert("获取失败！！！")
                     }
-
                 });
             }
         }

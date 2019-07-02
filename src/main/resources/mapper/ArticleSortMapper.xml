@@ -12,6 +12,7 @@
         </association>
     </resultMap>
 
+    <!--  查询子分类信息  -->
     <select id="getAll" resultMap="WithDeptResultMap">
         select * from article_sort as a
         left join article_sort_zi as b on a.sort_article_id = b.sort_id;

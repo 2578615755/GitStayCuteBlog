@@ -32,7 +32,6 @@ public class ArticleSortZi implements Serializable {
    */
   @TableField("sortZi_sort_article_id")
   private Integer sortId;
-
   /**
    * 帖子分类子类
    */

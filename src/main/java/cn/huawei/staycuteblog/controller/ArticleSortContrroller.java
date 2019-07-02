@@ -2,6 +2,7 @@ package cn.huawei.staycuteblog.controller;
 
 
 import cn.huawei.staycuteblog.entity.ArticleSort;
+import cn.huawei.staycuteblog.entity.ArticleSortZi;
 import cn.huawei.staycuteblog.service.ArticleSortService;
 import com.sun.javafx.collections.MappingChange;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,16 @@ public class ArticleSortContrroller {
         map.put("status",100);
         map.put("msg","处理成功");
         map.put("list",list);
+        return map;
+    }
+
+    @RequestMapping("/getZi")
+    public Map<String,Object> getAllZi(){
+        List<ArticleSortZi> ziList = articleSortService.getAllZi();
+        Map<String,Object> map=new HashMap<>();
+        map.put("status",100);
+        map.put("msg","处理成功");
+        map.put("list",ziList);
         return map;
     }
 }
