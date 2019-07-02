@@ -4498,11 +4498,11 @@
   option("rtlMoveVisually", !windows);
   option("wholeLineUpdateBefore", true);
 
-  option("theme", "default", function(cm) {
+  option("theme", "public.admin.css.default", function(cm) {
     themeChanged(cm);
     guttersChanged(cm);
   }, true);
-  option("keyMap", "default", keyMapChanged);
+  option("keyMap", "public.admin.css.default", keyMapChanged);
   option("extraKeys", null);
 
   option("lineWrapping", false, wrappingChanged, true);
@@ -4888,7 +4888,7 @@
     "Ctrl-V": "goPageDown", "Shift-Ctrl-V": "goPageUp", "Ctrl-D": "delCharAfter", "Ctrl-H": "delCharBefore",
     "Alt-D": "delWordAfter", "Alt-Backspace": "delWordBefore", "Ctrl-K": "killLine", "Ctrl-T": "transposeChars"
   };
-  keyMap["default"] = mac ? keyMap.macDefault : keyMap.pcDefault;
+  keyMap["public.admin.css.default"] = mac ? keyMap.macDefault : keyMap.pcDefault;
 
   // KEYMAP DISPATCH
 

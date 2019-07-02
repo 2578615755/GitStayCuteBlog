@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="wap-font-scale" content="no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>柠檬博客-权限不足</title>
+    <link th:href="@{/default/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/default/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/default/css/animate.min.css}" rel="stylesheet">
+    <link th:href="@{/default/css/style.min.css}" rel="stylesheet">
+    <script>if (window.top !== window.self) {
+        window.top.location = window.location;
+    }</script>
+    <script th:src="@{/default/js/jquery.min.js}"></script>
+    <script th:src="@{/default/js/bootstrap.min.js}"></script>
+</head>
+
+<body class="gray-bg">
+<div class="middle-box text-center animated fadeInDown">
+    <h1>401</h1>
+    <h3 class="font-bold">抱歉，您的权限不足哦~</h3>
+    <div class="error-desc">请联系管理员
+        <div class="form-group">
+            <a href="/" class="btn btn-primary m-t">返回到主页</a>
+            <a href="javascript:history.go(-1);"  class="btn btn-primary m-t">返回上一页</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

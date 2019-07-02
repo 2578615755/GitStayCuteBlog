@@ -73,4 +73,13 @@ public interface UserMapper{
      */
     @Update("update user set user_pwd=#{password}  where user_name=#{username} ;")
     int updatePassword(String username,String password);
+
+    /**
+     * 后台登录查询用户信息
+     * @param username
+     * @param password
+     * @return
+     */
+    @Select("select * from user where user_name=#{username} and user_pwd=#{password}")
+    User selectUser(String username,String password);
 }

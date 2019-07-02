@@ -33,7 +33,7 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
       "return": C, "break": C, "continue": C, "new": C, "delete": C, "throw": C, "debugger": C,
       "var": kw("var"), "const": kw("var"), "let": kw("var"),
       "function": kw("function"), "catch": kw("catch"),
-      "for": kw("for"), "switch": kw("switch"), "case": kw("case"), "default": kw("default"),
+      "for": kw("for"), "switch": kw("switch"), "case": kw("case"), "default": kw("public.admin.css.default"),
       "in": operator, "typeof": operator, "instanceof": operator,
       "true": atom, "false": atom, "null": atom, "undefined": atom, "NaN": atom, "Infinity": atom,
       "this": kw("this"), "module": kw("module"), "class": kw("class"), "super": kw("atom"),
@@ -344,7 +344,7 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
     if (type == "switch") return cont(pushlex("form"), expression, pushlex("}", "switch"), expect("{"),
                                       block, poplex, poplex);
     if (type == "case") return cont(expression, expect(":"));
-    if (type == "default") return cont(expect(":"));
+    if (type == "public.admin.css.default") return cont(expect(":"));
     if (type == "catch") return cont(pushlex("form"), pushcontext, expect("("), funarg, expect(")"),
                                      statement, poplex, popcontext);
     if (type == "module") return cont(pushlex("form"), pushcontext, afterModule, popcontext, poplex);
@@ -571,7 +571,7 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
   }
   function afterExport(_type, value) {
     if (value == "*") { cx.marked = "keyword"; return cont(maybeFrom, expect(";")); }
-    if (value == "default") { cx.marked = "keyword"; return cont(expression, expect(";")); }
+    if (value == "public.admin.css.default") { cx.marked = "keyword"; return cont(expression, expect(";")); }
     return pass(statement);
   }
   function afterImport(type) {

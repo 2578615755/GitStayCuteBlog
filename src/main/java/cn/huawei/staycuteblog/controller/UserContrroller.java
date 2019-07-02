@@ -33,7 +33,7 @@ import java.util.Random;
 @Controller
 @RequestMapping("/user")
 public class UserContrroller {
-
+    private final String POWER="管理员";
     @Autowired
     private UserService userService;
     @Autowired
@@ -63,6 +63,10 @@ public class UserContrroller {
     @RequestMapping("/adminLoginPage")
     public String adminLoginPage(){
         return "adminLogin";
+    }
+    @RequestMapping("/noAuthPage")
+    public String noAuthPage(){
+        return "noAuth";
     }
     /**
      * 登录
@@ -207,6 +211,31 @@ public class UserContrroller {
             return "true";
         }else {
             return "false";
+        }
+    }
+    @RequestMapping("/selectUser")
+    public String selectUser(HttpSession session,String username,String password){
+        //1.获取Subject
+        Subject subject = SecurityUtils.getSubject();
+        //2.封装用户数据
+        UsernamePasswordToken token=new UsernamePasswordToken(username,password);
+        ///3.执行登录方法
+        try {
+            subject.login(token);
+            //登陆成功
+            User user = userService.login(username);
+            if(user.getUserPower().equals(POWER)){
+                session.setAttribute("user",user);
+                return "redirect:/admin/index.html";
+            }else {
+                return "redirect:/user/noAuthPage";
+            }
+        } catch (UnknownAccountException e) {
+            session.setAttribute("msg","您的用户名不存在");
+            return "redirect:/adminLogin.html";
+        }catch (IncorrectCredentialsException e) {
+            session.setAttribute("msg","您的密码填写有误");
+            return "redirect:/adminLogin.html";
         }
     }
 }

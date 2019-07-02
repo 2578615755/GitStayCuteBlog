@@ -454,7 +454,7 @@
 		}
 
 		// Get the time
-		var value = ((this.input.prop('value') || this.options['default'] || '') + '').split(':');
+		var value = ((this.input.prop('value') || this.options['public.admin.css.default'] || '') + '').split(':');
 		if (value[0] === 'now') {
 			var now = new Date(+ new Date() + this.options.fromnow);
 			value = [

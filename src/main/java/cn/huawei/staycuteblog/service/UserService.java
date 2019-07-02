@@ -60,4 +60,11 @@ public interface UserService{
      * @return
      */
     int updatePassword(String username,String password);
+
+    /**
+     * 通过同户名查询用户信息
+     * @param username
+     * @return
+     */
+    User selectUser(String username,String password);
 }
