@@ -6,6 +6,8 @@ import cn.huawei.staycuteblog.mapper.UserMapper;
 import cn.huawei.staycuteblog.service.UserService;
 import cn.huawei.staycuteblog.utils.IpUtil;
 import cn.huawei.staycuteblog.utils.Msg;
+import cn.huawei.staycuteblog.utils.ReSetSmsUtil;
+import cn.huawei.staycuteblog.utils.SmsUtil;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -17,15 +19,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Random;
-
-import static cn.huawei.staycuteblog.utils.SmsUtil.sendSms;
-
 /**
  * <p>
  *  前端控制器
@@ -56,7 +52,18 @@ public class UserContrroller {
     public String registered(){
         return "registered";
     }
-
+    @RequestMapping("/resetpasswordPage")
+    public String resetpasswordPage(){
+        return "resetpassword";
+    }
+    @RequestMapping("/dataPage")
+    public String dataPage(){
+        return "data";
+    }
+    @RequestMapping("/adminLoginPage")
+    public String adminLoginPage(){
+        return "adminLogin";
+    }
     /**
      * 登录
      * @param session
@@ -92,18 +99,6 @@ public class UserContrroller {
             return "redirect:/user/loginpage";
         }
     }
-
-    /**
-     * 通过用户名查询用户头像
-     * @param username
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping("/findTitle")
-    public String findTitle(String username){
-        return userService.findTitle(username);
-    }
-
     /**
      * 手机号码注册
      * @param session
@@ -120,12 +115,42 @@ public class UserContrroller {
             session.setAttribute("msg","注册成功,正在跳转至登录页!");
             return "redirect:/user/loginpage";
         }else {
-            session.setAttribute("msg","发生未知错误,请联系管理员");
+            session.setAttribute("msg","发生未知错误,请尝试重新注册!");
             return "redirect:/user/registeredpage";
         }
     }
+
     /**
-     * 发送手机验证码 以及返回验证码
+     * 重置密码
+     * @param phone
+     * @param password
+     * @return
+     */
+    @RequestMapping("/updatePassword")
+    public String updatePassword(HttpSession session,String phone,String password){
+        if(userService.updatePassword(phone, password)>0){
+            session.setAttribute("msg","重置密码成功,正在跳转至登录页!");
+            return "redirect:/user/loginpage";
+        }else {
+            session.setAttribute("msg","发生未知错误,请稍后再尝试!");
+            return "redirect:/user/resetpasswordPage";
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * 注册账号时发送手机验证码 以及返回验证码
      * @param phone
      * @return
      * @throws Exception
@@ -137,9 +162,37 @@ public class UserContrroller {
         Random random=new Random();
         Integer result = random.nextInt(900000) + 100000;
         //发送验证码
-        SendSmsResponse response = sendSms(phone,String.valueOf(result));
+        SendSmsResponse response = SmsUtil.sendSms(phone,String.valueOf(result));
         //将验证码返回到ajax
         return String.valueOf(result);
+    }
+    /**
+     * 重置密码账号时发送手机验证码 以及返回验证码
+     * @param phone
+     * @return
+     * @throws Exception
+     */
+    @GetMapping("/reSetSendPhone")
+    @ResponseBody
+    public synchronized String reSetSendPhone(String phone)throws Exception{
+        //生成验证码
+        Random random=new Random();
+        Integer result = random.nextInt(900000) + 100000;
+        //发送验证码
+        SendSmsResponse response = ReSetSmsUtil.sendSms(phone,String.valueOf(result));
+        //将验证码返回到ajax
+        return String.valueOf(result);
+    }
+
+    /**
+     * 通过用户名查询用户头像
+     * @param username
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/findTitle")
+    public String findTitle(String username){
+        return userService.findTitle(username);
     }
 
     /**

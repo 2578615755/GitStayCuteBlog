@@ -73,4 +73,15 @@ public class UserServiceImpl implements UserService {
     public User selectPhoneTrue(String username) {
         return userMapper.selectPhoneTrue(username);
     }
+
+    /**
+     * 重置密码
+     * @param username
+     * @param password
+     * @return
+     */
+    @Override
+    public int updatePassword(String username, String password) {
+        return userMapper.updatePassword(username,password);
+    }
 }
