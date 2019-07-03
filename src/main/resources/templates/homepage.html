@@ -5,10 +5,11 @@
     <title>柠檬博客-主页</title>
     <link th:href="@{/default/css/styles.css}" rel="stylesheet">
     <link th:href="@{/default/css/zzsc.css}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{/default/js/jquery.min.js}"></script>
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
     <script type="text/javascript" th:src="@{/default/js/vue.js}"></script>
     <!--ajax请求需要引入的    -->
-    <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
 </head>
 <body>
 <header style="position: fixed;left: 0;top: 0;z-index: 1000">
@@ -42,25 +43,17 @@
                         <p>帖子分类</p>
                         <div class="fenlei">
                             <ul id="ulId">
-                                <li>
-                                    <dl class="fenleiLeft" v-for="item in list.articleSort.sortArticleName">
-                                        <dt>{{item.articleSort.sortArticleName}}</dt>
-                                        <dd v-for="item in list">
-                                            <a href="http://www.jq22.com">{{item.ziName}}</a>
+                                <li v-for="item in listZi">
+                                    <dl class="fenleiLeft">
+                                        <dt>{{item.sortArticleName}}</dt>
+                                        <dd>
+                                            <a v-for="itemZi in list" v-if="item.sortArticleId==itemZi.sortId" href="http://www.jq22.com">{{itemZi.ziName}}</a>
                                         </dd>
                                     </dl>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <ul class="navRight">
-                        <li><a href="http://www.jq22.com">单品</a><span></span></li>
-                        <li><a href="http://www.jq22.com">特惠</a></li>
-                        <li><a href="http://www.jq22.com">搭配</a></li>
-                        <li><a href="http://www.jq22.com">专辑</a><span></span></li>
-                        <li><a href="http://www.jq22.com">主题</a><span></span></li>
-                        <li><a href="http://www.jq22.com">店铺</a></li>
-                    </ul>
                 </div>
             </div>
             <div id="banner">
@@ -117,7 +110,6 @@
     </div>
 </footer>
 </body>
-<script type="text/javascript" th:src="@{/default/js/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/layer/layer.js}"></script>
 <script type="text/javascript" th:src="@{/layui/layui.all.js}"></script>
 <script type="text/javascript" th:src="@{/default/js/yido.js}"></script>
@@ -173,10 +165,12 @@
     var vue= new Vue({
         el:'#ulId',
         data:{
-            "list":[]
+            "list":[],
+            "listZi":[]
         },
         created(){  //当 vm 实例 的data ，methods 初始化完毕后，vm实例会自动执行created这个生命周期
             this.getAllList();
+            this.getAllZiList();
         },
         methods:{
             getAllList(){
@@ -187,6 +181,20 @@
                     }else{
                         alert("获取失败！！！")
                     }
+                    //等vue渲染完之后0.2秒在调用js，才可以获取用vue渲染的元素
+                    setTimeout("getDa()",200);
+                });
+            },
+            getAllZiList(){
+                this.$http.get('http://localhost:8080/articleSort/getZi').then(result =>{
+                    var result=result.body;
+                    if (result.status==100){
+                        this.listZi=result.list;
+                    }else{
+                        alert("获取失败！！！")
+                    }
+                    //等vue渲染完之后0.2秒在调用js，才可以获取用vue渲染的元素
+                    setTimeout("getDa()",200);
                 });
             }
         }

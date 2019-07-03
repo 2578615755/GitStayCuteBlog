@@ -25,5 +25,5 @@ public interface ArticleSortService{
      * 查询分类信息
      * @return
      */
-    List<ArticleSortZi> getAllZi();
+    List<ArticleSort> getAllZi();
 }

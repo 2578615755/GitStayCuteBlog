@@ -42,8 +42,9 @@ public class ArticleSortContrroller {
     }
 
     @RequestMapping("/getZi")
+    @ResponseBody
     public Map<String,Object> getAllZi(){
-        List<ArticleSortZi> ziList = articleSortService.getAllZi();
+        List<ArticleSort> ziList = articleSortService.getAllZi();
         Map<String,Object> map=new HashMap<>();
         map.put("status",100);
         map.put("msg","处理成功");
