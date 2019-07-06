@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -85,8 +87,28 @@ public class UserServiceImpl implements UserService {
         return userMapper.updatePassword(username,password);
     }
 
+    /**
+     * 后台登录
+     * @param username
+     * @param password
+     * @return
+     */
     @Override
     public User selectUser(String username,String password) {
         return userMapper.selectUser(username,password);
+    }
+
+    /**
+     * 查询所有用户
+     * @return
+     */
+    @Override
+    public List<User> selectAll() {
+        return userMapper.selectAll();
+    }
+
+    @Override
+    public int deleteUserById(Integer id) {
+        return userMapper.deleteUserById(id);
     }
 }

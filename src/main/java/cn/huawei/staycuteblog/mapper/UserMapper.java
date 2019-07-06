@@ -1,10 +1,9 @@
 package cn.huawei.staycuteblog.mapper;
 
 import cn.huawei.staycuteblog.entity.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -82,4 +81,19 @@ public interface UserMapper{
      */
     @Select("select * from user where user_name=#{username} and user_pwd=#{password}")
     User selectUser(String username,String password);
+
+    /**
+     * 查询所有用户
+     * @return
+     */
+    @Select("select * from user;")
+    List<User> selectAll();
+
+    /**
+     * 按照ID删除用户
+     * @param id
+     * @return
+     */
+    @Delete("DELETE FROM user WHERE user_id = #{id}")
+    int deleteUserById(Integer id);
 }

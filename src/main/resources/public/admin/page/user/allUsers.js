@@ -8,7 +8,7 @@ layui.config({
 
 	//加载页面数据
 	var usersData = '';
-	$.get("../../json/usersList.json", function(data){
+	$.get("http://localhost:8080/admin/selectAll", function(data){
 		usersData = data;
 		if(window.sessionStorage.getItem("addUser")){
 			var addUsers = window.sessionStorage.getItem("addUser");
@@ -25,7 +25,7 @@ layui.config({
 			var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
             setTimeout(function(){
             	$.ajax({
-					url : "../../json/usersList.json",
+					url : "http://localhost:8080/admin/selectAll",
 					type : "get",
 					dataType : "json",
 					success : function(data){
@@ -65,10 +65,10 @@ layui.config({
 			            		usersStr["userSex"] = changeStr(usersStr.userSex);
 		            		}
 		            		//会员等级
-		            		if(usersStr.userGrade.indexOf(selectStr) > -1){
-			            		usersStr["userGrade"] = changeStr(usersStr.userGrade);
+		            		if(usersStr.userPower.indexOf(selectStr) > -1){
+			            		usersStr["userPower"] = changeStr(usersStr.userGrade);
 		            		}
-		            		if(usersStr.userName.indexOf(selectStr)>-1 || usersStr.userEmail.indexOf(selectStr)>-1 || usersStr.userSex.indexOf(selectStr)>-1 || usersStr.userGrade.indexOf(selectStr)>-1){
+		            		if(usersStr.userName.indexOf(selectStr)>-1 || usersStr.userEmail.indexOf(selectStr)>-1 || usersStr.userSex.indexOf(selectStr)>-1 || usersStr.userPower.indexOf(selectStr)>-1){
 		            			userArray.push(usersStr);
 		            		}
 		            	}
@@ -155,9 +155,9 @@ layui.config({
 			    	+  '<td>'+currData[i].userName+'</td>'
 			    	+  '<td>'+currData[i].userEmail+'</td>'
 			    	+  '<td>'+currData[i].userSex+'</td>'
-			    	+  '<td>'+currData[i].userGrade+'</td>'
-			    	+  '<td>'+currData[i].userStatus+'</td>'
-			    	+  '<td>'+currData[i].userEndTime+'</td>'
+			    	+  '<td>'+currData[i].userPower+'</td>'
+			    	+  '<td>'+currData[i].userFreeze+'</td>'
+			    	+  '<td>'+currData[i].userRegisterTime+'</td>'
 			    	+  '<td>'
 					+    '<a class="layui-btn layui-btn-mini users_edit"><i class="iconfont icon-edit"></i> 编辑</a>'
 					+    '<a class="layui-btn layui-btn-danger layui-btn-mini users_del" data-id="'+data[i].usersId+'"><i class="layui-icon">&#xe640;</i> 删除</a>'

@@ -129,7 +129,7 @@ public class User implements Serializable {
      * 是否冻结，0为不冻结，1为冻结
      */
 	@TableField("user_freeze")
-	private Integer userFreeze;
+	private String userFreeze;
     /**
      * 拥有权限
      */

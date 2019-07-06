@@ -2,6 +2,9 @@ package cn.huawei.staycuteblog.service;
 
 import cn.huawei.staycuteblog.entity.User;
 import com.baomidou.mybatisplus.service.IService;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * <p>
@@ -67,4 +70,15 @@ public interface UserService{
      * @return
      */
     User selectUser(String username,String password);
+    /**
+     * 查询所有用户
+     * @return
+     */
+    List<User> selectAll();
+    /**
+     * 按照ID删除用户
+     * @param id
+     * @return
+     */
+    int deleteUserById(Integer id);
 }

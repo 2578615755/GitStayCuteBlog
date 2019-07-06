@@ -42,7 +42,7 @@ layui.config({
 	)
 
 	//用户数
-	$.get("../json/usersList.json",
+	$.get("http://localhost:8080/admin/selectAll",
 		function(data){
 			$(".userAll span").text(data.length);
 		}
