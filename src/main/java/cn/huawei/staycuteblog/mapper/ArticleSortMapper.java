@@ -29,6 +29,6 @@ public interface ArticleSortMapper{
      * 查询分类信息
      * @return
      */
-    @Select("select zi_name from article_sort_zi")
-    List<ArticleSortZi> getAllZi();
+    @Select("select * from article_sort")
+    List<ArticleSort> getAllZi();
 }

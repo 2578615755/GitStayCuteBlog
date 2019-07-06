@@ -38,7 +38,7 @@ public class ArticleSortServiceImpl implements ArticleSortService {
      * @return
      */
     @Override
-    public List<ArticleSortZi> getAllZi() {
+    public List<ArticleSort> getAllZi() {
         return articleSortMapper.getAllZi();
     }
 }
