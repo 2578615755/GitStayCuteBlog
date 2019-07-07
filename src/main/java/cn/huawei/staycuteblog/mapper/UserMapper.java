@@ -96,4 +96,17 @@ public interface UserMapper{
      */
     @Delete("DELETE FROM user WHERE user_id = #{id}")
     int deleteUserById(Integer id);
+
+    /**
+     * 管理员添加用户
+     * @param username
+     * @param email
+     * @param sex
+     * @param userPower
+     * @param userFreeze
+     * @return
+     */
+    @Insert("insert into user (user_name,user_pwd,user_email,user_sex,user_power,user_freeze,user_qq,user_image_url,user_register_time) " +
+            "values (#{username},#{pwd},#{email},#{sex},#{userPower},#{userFreeze},#{qq},#{qqtitle},#{time});")
+    int adminInsertUser(String username,String pwd,String email,String sex,String userPower,String userFreeze,String qq,String qqtitle,String time);
 }

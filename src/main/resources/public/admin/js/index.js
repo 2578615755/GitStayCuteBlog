@@ -145,10 +145,10 @@ function donation(){
 		area : ['260px', '367px'],
 		tab : [{
 			title : "微信",
-			content : "<div style='padding:30px;overflow:hidden;background:#d2d0d0;'><img src='images/wechat.jpg'></div>"
+			content : "<div style='padding:30px;overflow:hidden;background:#d2d0d0;'><img src='../images/wx.png'></div>"
 		},{
 			title : "支付宝",
-			content : "<div style='padding:30px;overflow:hidden;background:#d2d0d0;'><img src='images/alipay.jpg'></div>"
+			content : "<div style='padding:30px;overflow:hidden;background:#d2d0d0;'><img src='../images/zfb.png'></div>"
 		}]
 	})
 }

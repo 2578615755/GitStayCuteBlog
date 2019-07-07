@@ -81,4 +81,14 @@ public interface UserService{
      * @return
      */
     int deleteUserById(Integer id);
+    /**
+     * 管理员添加用户
+     * @param username
+     * @param email
+     * @param sex
+     * @param userPower
+     * @param userFreeze
+     * @return
+     */
+    int adminInsertUser(String username,String pwd,String email,String sex,String userPower,String userFreeze,String qq,String qqtitle,String time);
 }

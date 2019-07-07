@@ -237,6 +237,9 @@ public class UserContrroller {
         }catch (IncorrectCredentialsException e) {
             session.setAttribute("msg","您的密码填写有误");
             return "redirect:/adminLogin.html";
+        }catch (Exception e) {
+            session.setAttribute("msg", "发生未知错误,请联系管理员");
+            return "redirect:/adminLogin.html";
         }
     }
 }

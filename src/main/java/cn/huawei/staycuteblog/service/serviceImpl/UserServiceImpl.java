@@ -111,4 +111,9 @@ public class UserServiceImpl implements UserService {
     public int deleteUserById(Integer id) {
         return userMapper.deleteUserById(id);
     }
+
+    @Override
+    public int adminInsertUser(String username,String pwd, String email, String sex, String userPower, String userFreeze, String qq, String qqtitle,String time) {
+        return userMapper.adminInsertUser(username,pwd,email,sex,userPower,userFreeze,qq,qqtitle,time);
+    }
 }

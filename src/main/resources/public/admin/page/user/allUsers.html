@@ -48,7 +48,7 @@
 					<th>性别</th>
 					<th>权限等级</th>
 					<th>会员状态</th>
-					<th>最后登录时间</th>
+					<th>注册时间</th>
 					<th>操作</th>
 				</tr> 
 		    </thead>
@@ -75,6 +75,7 @@
                     var addUsers = window.sessionStorage.getItem("addUser");
                     usersData = JSON.parse(addUsers).concat(usersData);
                 }
+                //window.sessionStorage.clear();
                 //执行加载数据的方法
                 usersList();
             })
@@ -127,7 +128,7 @@
                                     }
                                     //会员等级
                                     if(usersStr.userPower.indexOf(selectStr) > -1){
-                                        usersStr["userPower"] = changeStr(usersStr.userGrade);
+                                        usersStr["userPower"] = changeStr(usersStr.userPower);
                                     }
                                     if(usersStr.userName.indexOf(selectStr)>-1 || usersStr.userEmail.indexOf(selectStr)>-1 || usersStr.userSex.indexOf(selectStr)>-1 || usersStr.userPower.indexOf(selectStr)>-1){
                                         userArray.push(usersStr);
@@ -218,6 +219,8 @@
                     currData = usersData.concat().splice(curr*nums-nums, nums);
                     if(currData.length != 0){
                         for(var i=0;i<currData.length;i++){
+                            var d = new Date(currData[i].userRegisterTime);
+                            var times=d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
                             dataHtml += '<tr>'
                                 +  '<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
                                 +  '<td>'+currData[i].userName+'</td>'
@@ -225,7 +228,7 @@
                                 +  '<td>'+currData[i].userSex+'</td>'
                                 +  '<td>'+currData[i].userPower+'</td>'
                                 +  '<td>'+currData[i].userFreeze+'</td>'
-                                +  '<td>'+currData[i].userRegisterTime+'</td>'
+                                +  '<td>'+times+'</td>'
                                 +  '<td>'
                                 +    '<a class="layui-btn layui-btn-mini users_edit"><i class="iconfont icon-edit"></i> 编辑</a>'
                                 +    '<a class="layui-btn layui-btn-danger layui-btn-mini users_del" data-id="'+data[i].userId+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
@@ -250,7 +253,15 @@
                     }
                 })
             }
-
+            //格式化时间
+            function formatTime(_time){
+                var year = _time.getFullYear();
+                var month = _time.getMonth()+1<10 ? "0"+(_time.getMonth()+1) : _time.getMonth()+1;
+                var day = _time.getDate()<10 ? "0"+_time.getDate() : _time.getDate();
+                var hour = _time.getHours()<10 ? "0"+_time.getHours() : _time.getHours();
+                var minute = _time.getMinutes()<10 ? "0"+_time.getMinutes() : _time.getMinutes();
+                return year+"-"+month+"-"+day+" "+hour+":"+minute;
+            }
         })
     </script>
 </body>

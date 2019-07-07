@@ -2,6 +2,7 @@ package cn.huawei.staycuteblog.controller;
 
 import cn.huawei.staycuteblog.entity.User;
 import cn.huawei.staycuteblog.service.UserService;
+import cn.huawei.staycuteblog.utils.Time;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +45,17 @@ public class AdminContrroller {
     public String deleteUserById(Integer id){
         if(userService.deleteUserById(id)>0){
             return "删除成功";
+        }else {
+            return "未知错误";
+        }
+    }
+    @RequestMapping("/adminInsertUser")
+    @ResponseBody
+    public String adminInsertUser(String username,String email,String sex,String userPower,String userFreeze){
+        String qq=email.substring(0,10);
+        String qqtitle="http://q1.qlogo.cn/g?b=qq&nk="+qq+"&s=140";
+        if(userService.adminInsertUser(username,username,email,sex,userPower,userFreeze,qq,qqtitle, Time.getTime())>0){
+            return "添加成功";
         }else {
             return "未知错误";
         }
