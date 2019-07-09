@@ -8,7 +8,7 @@ layui.config({
 
 	//加载页面数据
 	var newsData = '';
-	$.get("../../json/newsList.json", function(data){
+	$.get("/admin/adminArticle", function(data){
 		var newArray = [];
 		//单击首页“待审核文章”加载的信息
 		if($(".top_tab li.layui-this cite",parent.document).text() == "待审核文章"){
@@ -43,7 +43,7 @@ layui.config({
 			var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
             setTimeout(function(){
             	$.ajax({
-					url : "../../json/newsList.json",
+					url : "/admin/adminArticle",
 					type : "get",
 					dataType : "json",
 					success : function(data){
@@ -52,7 +52,9 @@ layui.config({
 							newsData = JSON.parse(addNews).concat(data);
 						}else{
 							newsData = data;
+							console.log(newsData)
 						}
+
 						for(var i=0;i<newsData.length;i++){
 							var newsStr = newsData[i];
 							var selectStr = $(".search_input").val();
@@ -71,26 +73,26 @@ layui.config({
 		            			}
 		            		}
 		            		//文章标题
-		            		if(newsStr.newsName.indexOf(selectStr) > -1){
-			            		newsStr["newsName"] = changeStr(newsStr.newsName);
+		            		if(newsStr.articleName.indexOf(selectStr) > -1){
+			            		newsStr["articleName"] = changeStr(newsStr.articleName);
 		            		}
 		            		//发布人
-		            		if(newsStr.newsAuthor.indexOf(selectStr) > -1){
-			            		newsStr["newsAuthor"] = changeStr(newsStr.newsAuthor);
+		            		if(newsStr.articleUser.indexOf(selectStr) > -1){
+			            		newsStr["articleUser"] = changeStr(newsStr.articleUser);
 		            		}
-		            		//审核状态
-		            		if(newsStr.newsStatus.indexOf(selectStr) > -1){
-			            		newsStr["newsStatus"] = changeStr(newsStr.newsStatus);
+		            		//查看人数
+		            		if(newsStr.articleClick.indexOf(selectStr) > -1){
+			            		newsStr["articleClick"] = changeStr(newsStr.articleClick);
 		            		}
-		            		//浏览权限
-		            		if(newsStr.newsLook.indexOf(selectStr) > -1){
-			            		newsStr["newsLook"] = changeStr(newsStr.newsLook);
+		            		//所属分类
+		            		if(newsStr.articleSortZi.ziName.indexOf(selectStr) > -1){
+			            		newsStr["articleSortZi.ziName"] = changeStr(newsStr.articleSortZi.ziName);
 		            		}
 		            		//发布时间
-		            		if(newsStr.newsTime.indexOf(selectStr) > -1){
-			            		newsStr["newsTime"] = changeStr(newsStr.newsTime);
+		            		if(newsStr.articleTime.indexOf(selectStr) > -1){
+			            		newsStr["articleTime"] = changeStr(newsStr.articleTime);
 		            		}
-		            		if(newsStr.newsName.indexOf(selectStr)>-1 || newsStr.newsAuthor.indexOf(selectStr)>-1 || newsStr.newsStatus.indexOf(selectStr)>-1 || newsStr.newsLook.indexOf(selectStr)>-1 || newsStr.newsTime.indexOf(selectStr)>-1){
+		            		if(newsStr.articleName.indexOf(selectStr)>-1 || newsStr.articleUser.indexOf(selectStr)>-1 || newsStr.articleClick.indexOf(selectStr)>-1 || newsStr.articleSortZi.ziName.indexOf(selectStr)>-1 || newsStr.articleTime.indexOf(selectStr)>-1){
 		            			newArray.push(newsStr);
 		            		}
 		            	}
@@ -106,65 +108,6 @@ layui.config({
 		}
 	})
 
-	//添加文章
-	$(".newsAdd_btn").click(function(){
-		var index = layui.layer.open({
-			title : "添加文章",
-			type : 2,
-			content : "newsAdd.html",
-			success : function(layero, index){
-				layui.layer.tips('点击此处返回文章列表', '.layui-layer-setwin .layui-layer-close', {
-					tips: 3
-				});
-			}
-		})
-		//改变窗口大小时，重置弹窗的高度，防止超出可视区域（如F12调出debug的操作）
-		$(window).resize(function(){
-			layui.layer.full(index);
-		})
-		layui.layer.full(index);
-	})
-
-	//推荐文章
-	$(".recommend").click(function(){
-		var $checkbox = $(".news_list").find('tbody input[type="checkbox"]:not([name="show"])');
-		if($checkbox.is(":checked")){
-			var index = layer.msg('推荐中，请稍候',{icon: 16,time:false,shade:0.8});
-            setTimeout(function(){
-                layer.close(index);
-				layer.msg("推荐成功");
-            },2000);
-		}else{
-			layer.msg("请选择需要推荐的文章");
-		}
-	})
-
-	//审核文章
-	$(".audit_btn").click(function(){
-		var $checkbox = $('.news_list tbody input[type="checkbox"][name="checked"]');
-		var $checked = $('.news_list tbody input[type="checkbox"][name="checked"]:checked');
-		if($checkbox.is(":checked")){
-			var index = layer.msg('审核中，请稍候',{icon: 16,time:false,shade:0.8});
-            setTimeout(function(){
-            	for(var j=0;j<$checked.length;j++){
-            		for(var i=0;i<newsData.length;i++){
-						if(newsData[i].newsId == $checked.eq(j).parents("tr").find(".news_del").attr("data-id")){
-							//修改列表中的文字
-							$checked.eq(j).parents("tr").find("td:eq(3)").text("审核通过").removeAttr("style");
-							//将选中状态删除
-							$checked.eq(j).parents("tr").find('input[type="checkbox"][name="checked"]').prop("checked",false);
-							form.render();
-						}
-					}
-            	}
-                layer.close(index);
-				layer.msg("审核成功");
-            },2000);
-		}else{
-			layer.msg("请选择需要审核的文章");
-		}
-	})
-
 	//批量删除
 	$(".batchDel").click(function(){
 		var $checkbox = $('.news_list tbody input[type="checkbox"][name="checked"]');
@@ -176,7 +119,7 @@ layui.config({
 	            	//删除数据
 	            	for(var j=0;j<$checked.length;j++){
 	            		for(var i=0;i<newsData.length;i++){
-							if(newsData[i].newsId == $checked.eq(j).parents("tr").find(".news_del").attr("data-id")){
+							if(newsData[i].articleId == $checked.eq(j).parents("tr").find(".news_del").attr("data-id")){
 								newsData.splice(i,1);
 								newsList(newsData);
 							}
@@ -243,9 +186,11 @@ layui.config({
 		layer.confirm('确定删除此信息？',{icon:3, title:'提示信息'},function(index){
 			//_this.parents("tr").remove();
 			for(var i=0;i<newsData.length;i++){
-				if(newsData[i].newsId == _this.attr("data-id")){
+				if(newsData[i].articleId == _this.attr("data-id")){
+					$.get("/")
 					newsData.splice(i,1);
 					newsList(newsData);
+					layer.msg('删除成功！',{icon:1})
 				}
 			}
 			layer.close(index);
@@ -263,22 +208,20 @@ layui.config({
 			}
 			if(currData.length != 0){
 				for(var i=0;i<currData.length;i++){
+					var d = new Date(currData[i].articleTime);
+					var times=d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+
 					dataHtml += '<tr>'
 			    	+'<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
-			    	+'<td align="left">'+currData[i].newsName+'</td>'
-			    	+'<td>'+currData[i].newsAuthor+'</td>';
-			    	if(currData[i].newsStatus == "待审核"){
-			    		dataHtml += '<td style="color:#f00">'+currData[i].newsStatus+'</td>';
-			    	}else{
-			    		dataHtml += '<td>'+currData[i].newsStatus+'</td>';
-			    	}
-			    	dataHtml += '<td>'+currData[i].newsLook+'</td>'
-			    	+'<td><input type="checkbox" name="show" lay-skin="switch" lay-text="是|否" lay-filter="isShow"'+currData[i].isShow+'></td>'
-			    	+'<td>'+currData[i].newsTime+'</td>'
+			    	+'<td align="left">'+currData[i].articleName+'</td>'
+			    	+'<td>'+currData[i].articleUser+'</td>'
+			    	+'<td>'+currData[i].articleClick+'</td>'
+					+'<td>'+currData[i].articleSortZi.ziName+'</td>'
+					+'<td>'+times+'</td>'
 			    	+'<td>'
 					+  '<a class="layui-btn layui-btn-mini news_edit"><i class="iconfont icon-edit"></i> 编辑</a>'
 					+  '<a class="layui-btn layui-btn-normal layui-btn-mini news_collect"><i class="layui-icon">&#xe600;</i> 收藏</a>'
-					+  '<a class="layui-btn layui-btn-danger layui-btn-mini news_del" data-id="'+data[i].newsId+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
+					+  '<a class="layui-btn layui-btn-danger layui-btn-mini news_del" data-id="'+data[i].articleId+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
 			        +'</td>'
 			    	+'</tr>';
 				}
@@ -289,7 +232,7 @@ layui.config({
 		}
 
 		//分页
-		var nums = 13; //每页出现的数据量
+		var nums = 5; //每页出现的数据量
 		if(that){
 			newsData = that;
 		}

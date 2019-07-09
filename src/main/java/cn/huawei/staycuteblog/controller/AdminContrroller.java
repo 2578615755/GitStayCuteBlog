@@ -1,6 +1,8 @@
 package cn.huawei.staycuteblog.controller;
 
+import cn.huawei.staycuteblog.entity.Article;
 import cn.huawei.staycuteblog.entity.User;
+import cn.huawei.staycuteblog.service.ArticleService;
 import cn.huawei.staycuteblog.service.UserService;
 import cn.huawei.staycuteblog.utils.Time;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class AdminContrroller {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ArticleService articleService;
 
     /**
      * 查询所有用户
@@ -59,5 +64,14 @@ public class AdminContrroller {
         }else {
             return "未知错误";
         }
+    }
+
+
+
+
+    @RequestMapping("/adminArticle")
+    @ResponseBody
+    public List<Article> adminArticle(){
+        return articleService.selectAtrcle();
     }
 }

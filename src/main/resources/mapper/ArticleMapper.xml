@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.huawei.staycuteblog.mapper.ArticleMapper" >
+    <resultMap id="WithDeptResultMap" type="cn.huawei.staycuteblog.entity.Article">
+        <id column="article_id" property="articleId"/>
+        <result column="article_user" property="articleUser"/>
+        <result column="article_click" property="articleClick"/>
+        <result column="article_name" property="articleName"/>
+        <result column="article_time" property="articleTime"/>
+        <result column="article_content" property="articleContent"/>
+        <!--  指定联合查询出的部门字段的封装  -->
+        <association property="articleSortZi" javaType="cn.huawei.staycuteblog.entity.ArticleSortZi">
+            <id column="zi_id" property="ziId"/>
+            <result column="zi_name" property="ziName"/>
+            <result column="sort_id" property="sortId"/>
+        </association>
+    </resultMap>
+
+    <!--  查询子分类信息  -->
+    <select id="selectArticle" resultMap="WithDeptResultMap">
+       select * from article as a
+        left join article_sort_zi as b
+        on a.sort_article_id=b.zi_id
+    </select>
+
+</mapper>
