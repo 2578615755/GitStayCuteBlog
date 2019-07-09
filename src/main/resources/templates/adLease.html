@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>广告位招租</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <style type="text/css">
+        .main{
+            padding: 0;
+            margin: 0;
+            height: 935px;
+            background-color: rgb(242,242,242);
+        }
+        .include_div{
+            margin: auto;
+            padding: 50px;
+            width: 1250px;
+            background-color: white;
+        }
+        .start_time{
+            margin-left: 110px;
+            width: 292px;
+            line-height: 38px;
+        }
+        .end_time{
+            margin-left: 110px;
+            width: 292px;
+            line-height: 38px;
+        }
+        .foot_span{
+            margin-left: 30px;
+            color: #eb7350;
+        }
+    </style>
+</head>
+<body>
+<script th:src="@{/default/js/jquery.min.js}"></script>
+<div class="main">
+    <div class="include_div">
+        <div class="layui-form">
+            <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+            <div class="layui-form-item layui-form-pane">
+                <label class="layui-form-label">广告类型</label>
+                <div class="layui-input-block">
+                    <select name="ad_type" lay-filter="type">
+                        <option value="0">请选择广告类型</option>
+                        <option value="2">图片</option>
+                        <option value="3">flash</option>
+                        <option value="4">代码</option>
+                        <option value="5">文字</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-pane">
+            <label class="layui-form-label">广告名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="ad_name" placeholder="请输入广告名称" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-pane">
+            <label class="layui-form-label">广告链接</label>
+            <div class="layui-input-block">
+                <input type="text" name="ad_link" placeholder="请输入广告链接" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-pane">
+            <label class="layui-form-label">链接表现</label>
+            <div class="layui-input-block">
+                <input type="text" name="ad_code" placeholder="请输入链接表现" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-pane">
+            <label class="layui-form-label">联系人</label>
+            <div class="layui-input-block">
+                <input type="text" name="link_man" placeholder="请输入广告联系人名字" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-pane">
+            <label class="layui-form-label">联系人邮箱</label>
+            <div class="layui-input-block">
+                <input type="text" name="link_email" placeholder="请输入广告联系人邮箱" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-pane">
+            <label class="layui-form-label">联系人电话</label>
+            <div class="layui-input-block">
+                <input type="text" name="link_phone" placeholder="请输入广告联系人电话" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+
+        <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+            <label class="layui-form-label">请选择开始时间</label>
+            <input type="text" class="layui-input start_time" id="time1" placeholder="yyyy-MM-dd">
+        </div>
+        <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+            <label class="layui-form-label">请选择结束时间</label>
+            <input type="text" class="layui-input end_time" id="time2" placeholder="yyyy-MM-dd">
+        </div>
+
+        <div class="layui-form-item layui-form-pane">
+            <div class="layui-input-block">
+                <button class="layui-btn"  id="tj">提交申请</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+        <div class="layui-footer">
+            <span class="foot_span">成功租到将会生成一个广告位</span>
+        </div>
+    </div>
+</div>
+<script th:src="@{/layui/layui.all.js}"></script>
+<script>
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#time1' //指定元素
+        });
+        laydate.render({
+            elem: '#time2' //指定元素
+        });
+    });
+    layui.use('layer', function(){
+        var layer = layui.layer;
+
+        $("#tj").bind("click",function(){
+            var ad_type = $("select[name='ad_type'] option:selected").val();
+            var ad_name = $("input[name = 'ad_name']").val();
+            var ad_link = $("input[name = 'ad_link']").val();
+            var ad_code = $("input[name = 'ad_code']").val();
+            var link_man = $("input[name = 'link_man']").val();
+            var link_email = $("input[name = 'link_email']").val();
+            var link_phone = $("input[name = 'link_phone']").val();
+            if(ad_type != 0 && ad_name != "" && ad_link != "" && ad_code != "" && link_man != "" && link_email != "" && link_phone != ""){
+                layer.open({
+                    title: '温馨提示' //标题
+                    ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                    ,content: '提交后将会人工复检' //弹出框的文字
+                    ,btn: '关闭'
+                    ,btnAlign: 'c' //按钮居中
+                    ,shade: 0 //不显示遮罩
+                    ,yes: function(){
+                        layer.closeAll();
+                    }
+                });
+            }else{
+                layer.open({
+                    title: '温馨提示' //标题
+                    ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                    ,content: '请先填写完毕' //弹出框的文字
+                    ,btn: '关闭'
+                    ,btnAlign: 'c' //按钮居中
+                    ,shade: 0 //不显示遮罩
+                    ,yes: function(){
+                        layer.closeAll();
+                    }
+                });
+                $.post("");
+            }
+        });
+    });
+</script>
+</body>
+</html>
