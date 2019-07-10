@@ -187,10 +187,16 @@ layui.config({
 			//_this.parents("tr").remove();
 			for(var i=0;i<newsData.length;i++){
 				if(newsData[i].articleId == _this.attr("data-id")){
-					$.get("/")
-					newsData.splice(i,1);
-					newsList(newsData);
-					layer.msg('删除成功！',{icon:1})
+					$.get("/article/deleteArticle","id="+newsData[i].articleId,function (data) {
+                        if (data=="删除成功!") {
+                            newsData.splice(i,1);
+                            window.parent.location.reload();
+                            layer.msg('删除成功！',{icon:1})
+                        }else if (data=="未知错误!"){
+                            layer.msg('删除失败！',{icon:2})
+                        }
+                    });
+                    newsList(newsData);
 				}
 			}
 			layer.close(index);

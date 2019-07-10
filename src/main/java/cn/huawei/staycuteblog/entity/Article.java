@@ -44,7 +44,7 @@ public class Article implements Serializable {
      * 查看人数
      */
 	@TableField("article_click")
-	private Integer articleClick;
+    private String articleClick;
     /**
      * 所属分类
      */

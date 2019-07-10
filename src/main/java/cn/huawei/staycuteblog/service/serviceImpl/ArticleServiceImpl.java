@@ -27,4 +27,9 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Article> selectAtrcle() {
         return articleMapper.selectArticle();
     }
+
+    @Override
+    public int deleteArtcle(Integer id) {
+        return articleMapper.deleteArticle(id);
+    }
 }
