@@ -49,6 +49,6 @@ public interface AdMapper{
      **/
     @Insert("insert into ad(media_type,ad_name,ad_link,ad_code,start_time,end_time,link_man,link_email,link_phone)"+
             "values (#{mediatype},#{adname},#{adlink},#{adcode},#{starttime},#{endtime},#{linkman},#{linkemail},#{linkphone})")
-    int insertAd(int mediatype, String adname, String adlink, String adcode, Date starttime,
-                 Date endtime,String linkman,String linkemail,String linkphone);
+    int insertAd(int mediatype, String adname, String adlink, String adcode, String starttime,
+                 String endtime,String linkman,String linkemail,String linkphone);
 }

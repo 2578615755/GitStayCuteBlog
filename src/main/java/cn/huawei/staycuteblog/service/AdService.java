@@ -40,6 +40,6 @@ public interface AdService{
      * @Author: Liao Shengfu
      * @Date: 2019/7/7
      **/
-    int insertAd(int mediatype, String adname, String adlink, String adcode, Date starttime,
-                 Date endtime,String linkman,String linkemail,String linkphone);
+    int insertAd(int mediatype, String adname, String adlink, String adcode, String starttime,
+                 String endtime,String linkman,String linkemail,String linkphone);
 }

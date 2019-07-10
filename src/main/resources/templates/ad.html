@@ -38,7 +38,8 @@
     </style>
 </head>
 <body>
-<div class="main">
+<script th:src="@{/default/js/jquery.min.js}"></script>
+<div class="main" onload="adload()">
     <div style="text-align:center;"><a th:href="@{http://www.337ds.com/}" rel="nofollow" target="_blank"><img th:src="@{https://www.xd0.com/upload/1/146486/images/20190408/20190408095793979397.gif}" style="opacity: 1;" /></a></div>
     <div style="text-align:center;"><a th:href="@{http://xd.zfanw.cn/}" rel="nofollow" target="_blank"><img th:src="@{https://www.xd0.com/upload/1/146486/images/20180918/20180918163058985898.gif}" style="opacity: 1;" /></a></div>
     <div style="text-align:center;"><a th:href="@{http://ds.210dsw.cn/}" rel="nofollow" target="_blank"><img th:src="@{https://www.xd0.com/upload/1/146486/images/20181024/20181024191897099709.gif}" style="opacity: 1;" /></a></div>
@@ -50,7 +51,7 @@
         <h2 class="title-context">推荐</h2>
         <h2 class="ad_context"><a th:href="@{/ad/adLease}" target="_blank">随便租一个广告位玩玩</a></h2>
         <div class="layui-carousel" id="test1">
-            <div carousel-item>
+            <div id="adinsert" carousel-item>
                 <div>
                     <span class="carousel-span">贪玩蓝月，这是你没有玩过的全新版本</span>
                     <a th:href="@{https://app.tanwan.com/htmlcode/4638.html}" target="_blank">
@@ -84,6 +85,19 @@
             //,anim: 'updown' //切换动画方式
         });
     });
+    function adload() {
+        $.post("/ad/getLease",function (data) {
+            var insertdata = "<div>\n" +
+                "                    <span class=\"carousel-span\"></span>\n" +
+                "                    <a th:href=\"@{https://app.tanwan.com/htmlcode/4638.html}\" target=\"_blank\">\n" +
+                "                        <img th:src=\"@{https://p.ssl.qhimg.com/t01d87e2f564e2772ae.jpg}\" style=\"height: 450px;width: 800px;\" />\n" +
+                "                    </a>\n" +
+                "                </div>"
+            $("#adinsert").prepend(
+
+            )
+        },"json")
+    }
 </script>
 </body>
 </html>

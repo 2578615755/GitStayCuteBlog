@@ -36,24 +36,24 @@ public class AdServiceImpl implements AdService {
     }
 
     /**
-     * @Description: 广告点击次数+1
-     * @Param:  广告id
-     * @return:  boolean
+     * @Description: 查询广告
+     * @Param:
+     * @return: List<Ad>
      * @Author: Liao Shengfu
-     * @Date: 2019/7/6
+     * @Date: 2019/7/7
      **/
     public List<Ad> getAd() {
-        return null;
+        return adMapper.getAd();
     }
 
     /**
-     * @Description: 广告点击次数+1
-     * @Param:  广告id
-     * @return:  boolean
+     * @Description: 添加广告信息
+     * @Param: mediatype,adname,adlink,adcode,starttime,endtime,linkman,linkemail,linkphone
+     * @return: int
      * @Author: Liao Shengfu
-     * @Date: 2019/7/6
+     * @Date: 2019/7/7
      **/
-    public int insertAd(int mediatype, String adname, String adlink, String adcode, Date starttime, Date endtime, String linkman, String linkemail, String linkphone) {
-        return 0;
+    public int insertAd(int mediatype, String adname, String adlink, String adcode, String starttime, String endtime, String linkman, String linkemail, String linkphone) {
+        return adMapper.insertAd(mediatype, adname, adlink, adcode, starttime, endtime, linkman, linkemail, linkphone);
     }
 }
