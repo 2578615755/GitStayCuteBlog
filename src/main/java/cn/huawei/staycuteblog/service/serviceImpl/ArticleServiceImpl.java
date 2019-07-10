@@ -4,7 +4,10 @@ import cn.huawei.staycuteblog.entity.Article;
 import cn.huawei.staycuteblog.mapper.ArticleMapper;
 import cn.huawei.staycuteblog.service.ArticleService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +19,17 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ArticleServiceImpl implements ArticleService {
-	
+
+    @Autowired
+    private ArticleMapper articleMapper;
+
+    @Override
+    public List<Article> selectAtrcle() {
+        return articleMapper.selectArticle();
+    }
+
+    @Override
+    public int deleteArtcle(Integer id) {
+        return articleMapper.deleteArticle(id);
+    }
 }
