@@ -134,6 +134,8 @@
             var link_man = $("input[name = 'link_man']").val();
             var link_email = $("input[name = 'link_email']").val();
             var link_phone = $("input[name = 'link_phone']").val();
+            var start_time = $("#time1").val();
+            var end_time = $("#time2").val();
             if(ad_type != 0 && ad_name != "" && ad_link != "" && ad_code != "" && link_man != "" && link_email != "" && link_phone != ""){
                 layer.open({
                     title: '温馨提示' //标题
@@ -144,8 +146,23 @@
                     ,shade: 0 //不显示遮罩
                     ,yes: function(){
                         layer.closeAll();
+                        $.post("/ad/insertLease",{
+                            "mediatype":ad_type,
+                            "adname":ad_name,
+                            "adlink":ad_link,
+                            "adcode":ad_code,
+                            "starttime":start_time,
+                            "endtime":end_time,
+                            "linkman":link_man,
+                            "linkemail":link_email,
+                            "linkphone":link_phone
+                        },function (data) {
+                            alert("好了");
+                        },"text");
                     }
                 });
+                // location.href="ad/getLease?mediatype="+ad_type+"&adname="+ad_name+"&adlink="+ad_link+"&adcode="+ad_code+"&starttime="+start_time+"&endtime="+end_time+
+                //     "&linkman="+link_man+"&linkemail="+link_email+"&linkphone="+link_phone;
             }else{
                 layer.open({
                     title: '温馨提示' //标题
@@ -158,7 +175,6 @@
                         layer.closeAll();
                     }
                 });
-                $.post("");
             }
         });
     });
