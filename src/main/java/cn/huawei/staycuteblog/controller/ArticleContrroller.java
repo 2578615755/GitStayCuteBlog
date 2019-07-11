@@ -31,7 +31,11 @@ public class ArticleContrroller {
         }else{
             return "未知错误!";
         }
+    }
 
+    @RequestMapping("/article")
+    public String article(){
+        return "article";
     }
 	
 }
