@@ -223,6 +223,7 @@
         <i class="fa fa-heart heart"></i>
         <a href="#">柠檬博客</a> All Rights Reserved</p></footer>
 <script th:src="@{/default/js/jquery.min.js}"></script>
+<script th:src="@{/layer/layer.js}"></script>
 <script th:src="@{/default/js/dianji.js}"></script>
 <script th:src="@{/default/js/image-loaded.js}"></script>
 <script th:src="@{/default/js/wow.js}"></script>
@@ -231,6 +232,32 @@
 <script th:src="@{/default/js/jquery.countto.js}"></script>
 <script th:src="@{/default/js/jquery.flexslider.js}"></script>
 <script th:src="@{/default/js/app.js}"></script>
+<script type="text/javascript">
+    // function blockright(oEvent) {
+    //     if(window.event){
+    //         oEvent = window.event;//处理兼容性
+    //         //代理事件对象
+    //         oEvent.returnValue=false;
+    //
+    //     }else
+    //    oEvent.preventDefault();
+    // }
+    // window.onload =  function () {
+    //     document.oncontextmenu=blockright;
+    // }
+    document.oncontextmenu = function () {
+        layer.msg("请您尊重劳动成果,谢谢!", {icon: 6});
+        return false;
+    };
+    document.onkeydown = function () {
+        if (window.event && window.event.keyCode == 123) {
+            layer.msg("请您尊重劳动成果,谢谢!", {icon: 6});
+            event.keyCode = 0;
+            event.returnValue = false;
+            return false;
+        }
+    };
+</script>
 <script id="myhk" src="https://music.limh.me/player/js/player.js" key="155719434794" m="1"></script>
 </body>
 </html>
