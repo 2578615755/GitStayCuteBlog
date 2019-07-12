@@ -6,6 +6,7 @@
     <link th:href="@{/default/css/styles.css}" rel="stylesheet">
     <link th:href="@{/default/css/zzsc.css}" rel="stylesheet">
     <script type="text/javascript" th:src="@{/default/js/jquery.min.js}"></script>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet">
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
     <script type="text/javascript" th:src="@{/default/js/vue.js}"></script>
     <!--ajax请求需要引入的    -->
@@ -18,7 +19,7 @@
             <li><a href="/">网站首页</a></li>
             <li><a href="/user/dataPage" target="_blank">博客资料</a></li>
             <li><a href="#" target="_blank">问答专区</a></li>
-            <li><a href="#" target="_blank">发布帖子</a></li>
+            <li><a  target="_blank" id="release">发布帖子</a></li>
             <li><a href="#" target="_blank">充值专区</a></li>
             <li><a href="#" target="_blank">说说专区</a></li>
             <li><a href="#" target="_blank">自助系统</a></li>
@@ -30,7 +31,7 @@
 <div class="mainContent">
     <aside>
         <div class="avatar">
-            <a href="#"><span class="username">青轻飞扬</span></a>
+            <a href="#"><span class="username" id="name">青轻飞扬</span></a>
         </div>
         <section class="topspaceinfo">
             <p class="syay">于千万人之中，我遇见了我所遇见的人....</p>
@@ -186,5 +187,75 @@
         }
     });
     console.log(vue)
+</script>
+<script type="text/javascript">
+    $("#release").click(function () {
+        $.ajax({
+            url:"/articleSort/getZi",
+            dataType:"json",
+            success:function (data) {
+                for (var i=0;i<data.list.length;i++){
+                    var fenlei="<option value='"+data.list[i].sortArticleId+"'>"+data.list[i].sortArticleName+"</option>";
+                    $("#fenlei").append(fenlei);
+                }
+            },
+            error:function () {
+                alert("请求错误!!!")
+            }
+
+        });
+       var name= $("#name").html();
+        layer.open({
+            title:"发布帖子",
+            type: 1,
+            area: ['700px', '90%'],
+            content: '<form class="layui-form" action="" style="margin: 40px;">\n' +
+                '  <div class="layui-form-item">\n' +
+                '    <label class="layui-form-label">文章标题</label>\n' +
+                '    <div class="layui-input-block">\n' +
+                '      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">\n' +
+                '    </div>\n' +
+                '  </div>\n' +
+                '  <div class="layui-form-item">\n' +
+                '    <label class="layui-form-label">发布人</label>\n' +
+                '    <div class="layui-input-block">\n' +
+                '      <input disabled type="text" name="title"  lay-verify="required" autocomplete="off" class="layui-input" value="'+name+'">\n' +
+                '    </div>\n' +
+                '  </div>\n' +
+                '  <div class="layui-form-item">\n' +
+                '    <label class="layui-form-label">分类</label>\n' +
+                '    <div class="layui-input-block">\n' +
+                '      <select name="city" lay-verify="required" id="fenlei" >\n' +
+                '      </select>\n' +
+                '    </div>\n' +
+                '  </div>\n' +
+                '  <div class="layui-form-item">\n' +
+                '    <label class="layui-form-label">子分类</label>\n' +
+                '    <div class="layui-input-block">\n' +
+                '      <select name="city" lay-verify="required">\n' +
+                '        <option value=""></option>\n' +
+                '        <option value="0">北京</option>\n' +
+                '        <option value="1">上海</option>\n' +
+                '        <option value="2">广州</option>\n' +
+                '        <option value="3">深圳</option>\n' +
+                '        <option value="4">杭州</option>\n' +
+                '      </select>\n' +
+                '    </div>\n' +
+                '  </div>\n' +
+                '  <div class="layui-form-item layui-form-text">\n' +
+                '    <label class="layui-form-label">文章内容</label>\n' +
+                '    <div class="layui-input-block">\n' +
+                '      <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>\n' +
+                '    </div>\n' +
+                '  </div>\n' +
+                '  <div class="layui-form-item">\n' +
+                '    <div class="layui-input-block">\n' +
+                '      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>\n' +
+                '      <button type="reset" class="layui-btn layui-btn-primary">重置</button>\n' +
+                '    </div>\n' +
+                '  </div>\n' +
+                '</form>'//这里content是一个普通的String
+        });
+    });
 </script>
 </html>
