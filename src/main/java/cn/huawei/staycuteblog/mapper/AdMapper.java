@@ -37,7 +37,7 @@ public interface AdMapper{
      * @Author: Liao Shengfu
      * @Date: 2019/7/7
      **/
-    @Select("select * from ad where enabled != 0")
+    @Select("select ad_id,ad_name,ad_link,ad_code from ad where enabled != 0")
     List<Ad> getAd();
 
     /**

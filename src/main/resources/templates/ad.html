@@ -39,29 +39,15 @@
 </head>
 <body>
 <script th:src="@{/default/js/jquery.min.js}"></script>
-<div class="main" onload="adload()">
+<div class="main" >
     <div style="text-align:center;"><a th:href="@{http://www.337ds.com/}" rel="nofollow" target="_blank"><img th:src="@{https://www.xd0.com/upload/1/146486/images/20190408/20190408095793979397.gif}" style="opacity: 1;" /></a></div>
     <div style="text-align:center;"><a th:href="@{http://xd.zfanw.cn/}" rel="nofollow" target="_blank"><img th:src="@{https://www.xd0.com/upload/1/146486/images/20180918/20180918163058985898.gif}" style="opacity: 1;" /></a></div>
-    <div style="text-align:center;"><a th:href="@{http://ds.210dsw.cn/}" rel="nofollow" target="_blank"><img th:src="@{https://www.xd0.com/upload/1/146486/images/20181024/20181024191897099709.gif}" style="opacity: 1;" /></a></div>
-    <div style="text-align:center;"><a th:href="@{http://xiaodao.52daishua.cn/}" rel="nofollow" target="_blank"><img th:src="@{https://www.xd0.com/upload/1/146486/images/20190524/20190524212331133113.jpg}" style="opacity: 1;" /></a></div>
-    <div style="text-align:center;"><a th:href="@{http://xd0.qqhai.cn/}" rel="nofollow" target="_blank"><img th:src="@{https://www.xd0.com/upload/1/146486/images/20190317/201903171018002828.gif}" style="opacity: 1;" /></a></div>
-    <div style="text-align:center;"><a th:href="@{http://ds.588ds.cn/}" rel="nofollow" target="_blank"><img th:src="@{https://www.xd0.com/upload/1/146486/images/20190524/201905242123003838.jpg}" style="opacity: 1;" /></a></div>
 
     <div class="recommend">
         <h2 class="title-context">推荐</h2>
         <h2 class="ad_context"><a th:href="@{/ad/adLease}" target="_blank">随便租一个广告位玩玩</a></h2>
         <div class="layui-carousel" id="test1">
-            <div id="adinsert" carousel-item>
-                <div>
-                    <span class="carousel-span">贪玩蓝月，这是你没有玩过的全新版本</span>
-                    <a th:href="@{https://app.tanwan.com/htmlcode/4638.html}" target="_blank">
-                        <img th:src="@{https://p.ssl.qhimg.com/t01d87e2f564e2772ae.jpg}" style="height: 450px;width: 800px;" />
-                    </a>
-                </div>
-                <div>
-                    <span class="carousel-span">十三路末班车,下载免费看小说</span>
-                    <a href="http://xiaoshuo.wtzw.com/" target="_blank"><img src="http://i2.hdslb.com/bfs/archive/28acc1509cf7d6d73a5a2807778fe0adc1e4b43a.jpg" style="height: 450px;width: 800px;" /></a>
-                </div>
+            <div carousel-item id="adinsert">
                 <div>
                     <span class="carousel-span">好消息！好消息！本广告页招租啦！便宜出租啦</span>
                     <a th:href="@{/ad/adLease}" target="_blank"><img src="http://p1.so.qhmsg.com/sdr/400__/t01018d3023e0ba6f96.jpg" style="height: 450px;width: 800px;" /></a>
@@ -71,9 +57,28 @@
     </div>
     <div style="text-align:center;"><a th:href="@{https://www.qqlmg.com/}" rel="nofollow" target="_blank"><img th:src="@{https://www.xd0.com/upload/1/146486/images/20190531/20190531013199379937.gif}" style="opacity: 1;" /></a></div>
     <div style="text-align:center;"><a th:href="@{http://plml.33ka.cn/}" rel="nofollow}" target="_blank" data-id="1"><img th:src="@{https://www.xd0.com/upload/1/146486/images/20190629/20190629211683698369.gif}" alt width="1000" height="56" title align style="opacity: 1;" /></a></div>
+    <div style="text-align:center;"><a th:href="@{http://xiaodao.52daishua.cn/}" rel="nofollow" target="_blank"><img th:src="@{https://www.xd0.com/upload/1/146486/images/20190524/20190524212331133113.jpg}" style="opacity: 1;" /></a></div>
+    <div style="text-align:center;"><a th:href="@{http://xd0.qqhai.cn/}" rel="nofollow" target="_blank"><img th:src="@{https://www.xd0.com/upload/1/146486/images/20190317/201903171018002828.gif}" style="opacity: 1;" /></a></div>
+    <div style="text-align:center;"><a th:href="@{http://ds.588ds.cn/}" rel="nofollow" target="_blank"><img th:src="@{https://www.xd0.com/upload/1/146486/images/20190524/201905242123003838.jpg}" style="opacity: 1;" /></a></div>
+    <div style="text-align:center;"><a th:href="@{http://ds.210dsw.cn/}" rel="nofollow" target="_blank"><img th:src="@{https://www.xd0.com/upload/1/146486/images/20181024/20181024191897099709.gif}" style="opacity: 1;" /></a></div>
 </div>
 <script th:src="@{/layui/layui.js}"></script>
 <script>
+    $(function () {
+        $.getJSON("/ad/getLease",callback);
+        function callback(data){
+            var str="";
+            for (var i = 0;i<data.length;i++){
+                str+="<div>\n" +
+                    "   <h4 class=\"carousel-span\">"+data[i].adName+"</h4>\n" +
+                    "   <a href='"+data[i].adLink+"' target=\"_blank\">\n" +
+                    "       <img src='"+data[i].adCode+"' style=\"height: 450px;width: 800px;\" />\n" +
+                    "   </a>\n" +
+                    "</div>";
+            }
+            $("#adinsert").append(str);
+        }
+    });
     layui.use('carousel', function(){
         var carousel = layui.carousel;
         //建造实例
@@ -82,22 +87,8 @@
             ,width: '800px' //设置容器宽度
             ,height: '450px' //设置容器高度
             ,arrow: 'always' //始终显示箭头
-            //,anim: 'updown' //切换动画方式
         });
     });
-    function adload() {
-        $.post("/ad/getLease",function (data) {
-            var insertdata = "<div>\n" +
-                "                    <span class=\"carousel-span\"></span>\n" +
-                "                    <a th:href=\"@{https://app.tanwan.com/htmlcode/4638.html}\" target=\"_blank\">\n" +
-                "                        <img th:src=\"@{https://p.ssl.qhimg.com/t01d87e2f564e2772ae.jpg}\" style=\"height: 450px;width: 800px;\" />\n" +
-                "                    </a>\n" +
-                "                </div>"
-            $("#adinsert").prepend(
-
-            )
-        },"json")
-    }
 </script>
 </body>
 </html>

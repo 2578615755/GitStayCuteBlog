@@ -3,6 +3,7 @@ package cn.huawei.staycuteblog.controller;
 
 import cn.huawei.staycuteblog.entity.Ad;
 import cn.huawei.staycuteblog.service.AdService;
+import org.hibernate.validator.constraints.EAN;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -54,7 +57,8 @@ public class AdContrroller {
 
     @RequestMapping("/getLease")
     @ResponseBody
-    public String getLease(Ad ad){
-	    return "";
+    public List<Ad> getLease(){
+        List<Ad> list = adService.getAd();
+	    return list;
     }
 }
